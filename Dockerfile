@@ -1,6 +1,15 @@
-FROM richarvey/nginx-php-fpm:1.7.2
+FROM richarvey/nginx-php-fpm:3.1.6
 
 COPY . .
+
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
+RUN composer install \
+    --no-dev \
+    --no-interaction \
+    --no-progress \
+    --optimize-autoloader \
+    --working-dir=/var/www/html
 
 ENV SKIP_COMPOSER=1
 ENV WEBROOT=/var/www/html/public
@@ -11,7 +20,5 @@ ENV REAL_IP_HEADER=1
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 ENV LOG_CHANNEL=stderr
-
-ENV COMPOSER_ALLOW_SUPERUSER=1
 
 CMD ["/start.sh"]

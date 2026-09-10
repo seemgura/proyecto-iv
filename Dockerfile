@@ -1,24 +1,33 @@
-FROM richarvey/nginx-php-fpm:3.1.6
+FROM php:8.5-fpm
+
+RUN apt-get update && apt-get install -y \
+    nginx \
+    git \
+    unzip \
+    libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+WORKDIR /var/www/html
 
 COPY . .
-
-ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN composer install \
     --no-dev \
     --no-interaction \
     --no-progress \
-    --optimize-autoloader \
-    --working-dir=/var/www/html
+    --optimize-autoloader
 
-ENV SKIP_COMPOSER=1
-ENV WEBROOT=/var/www/html/public
-ENV PHP_ERRORS_STDERR=1
-ENV RUN_SCRIPTS=1
-ENV REAL_IP_HEADER=1
+RUN chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
 
-ENV APP_ENV=production
-ENV APP_DEBUG=false
-ENV LOG_CHANNEL=stderr
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-CMD ["/start.sh"]
+COPY render-start.sh /usr/local/bin/render-start
+RUN chmod +x /usr/local/bin/render-start
+
+EXPOSE 10000
+
+CMD ["/usr/local/bin/render-start"]

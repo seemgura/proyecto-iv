@@ -1,13 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/sh
+set -e
 
-echo "Installing PHP dependencies..."
-composer install --no-dev --optimize-autoloader --working-dir=/var/www/html
+php artisan config:clear
+php artisan cache:clear
 
-echo "Caching configuration..."
-php artisan config:cache
-
-echo "Caching routes..."
-php artisan route:cache
-
-echo "Running migrations..."
 php artisan migrate --force
+
+php-fpm -D
+
+nginx -g "daemon off;"

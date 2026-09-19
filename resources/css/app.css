@@ -1,9 +1,311 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
+/* =========================================================
+   INTEOFFICE — DASHBOARD
+   ========================================================= */
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+.inteoffice-dashboard {
+    min-height: 100vh;
+    background: #f3f0e9;
+    color: #171715;
+    padding: 72px 6vw 40px;
+}
+
+/* HERO */
+
+.dashboard-hero {
+    max-width: 1280px;
+    margin: 0 auto 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 60px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid #c9c2b7;
+}
+
+.dashboard-eyebrow {
+    margin: 0 0 22px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    color: #8c867d;
+}
+
+.dashboard-hero h1 {
+    margin: 0;
+    max-width: 760px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(3rem, 6vw, 5.8rem);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+}
+
+.dashboard-hero h1 span {
+    display: block;
+    font-style: italic;
+}
+
+.dashboard-intro {
+    max-width: 560px;
+    margin: 32px 0 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #777168;
+}
+
+.dashboard-date {
+    flex-shrink: 0;
+    text-align: right;
+    padding-bottom: 4px;
+}
+
+.dashboard-date span {
+    display: block;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.18em;
+}
+
+.dashboard-date p {
+    margin: 8px 0 0;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    color: #8c867d;
+}
+
+
+/* GESTIÓN */
+
+.dashboard-section {
+    max-width: 1280px;
+    margin: 0 auto 120px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 42px;
+}
+
+.section-heading span {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: #9b958c;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid #c9c2b7;
+    border-bottom: 1px solid #c9c2b7;
+}
+
+.dashboard-card {
+    min-height: 330px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #c9c2b7;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.dashboard-card:last-child {
+    border-right: 0;
+}
+
+.dashboard-card:hover {
+    background: #171715;
+    color: #f3f0e9;
+}
+
+.card-number {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    color: #918b82;
+}
+
+.card-category {
+    margin: 0 0 14px;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: #8c867d;
+}
+
+.dashboard-card h3 {
+    margin: 0 0 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.15rem;
+    font-weight: 400;
+}
+
+.dashboard-card div > p:last-child {
+    max-width: 290px;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: #777168;
+}
+
+.dashboard-card:hover div > p:last-child,
+.dashboard-card:hover .card-category,
+.dashboard-card:hover .card-number {
+    color: #bcb5aa;
+}
+
+.card-arrow {
+    align-self: flex-end;
+    font-size: 1.6rem;
+    font-weight: 300;
+}
+
+
+/* ESTADO */
+
+.dashboard-status {
+    max-width: 1280px;
+    margin: 0 auto 120px;
+}
+
+.status-heading {
+    margin-bottom: 48px;
+}
+
+.status-heading h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid #c9c2b7;
+}
+
+.status-item {
+    padding: 32px 32px 36px 0;
+    border-right: 1px solid #c9c2b7;
+}
+
+.status-item:not(:first-child) {
+    padding-left: 32px;
+}
+
+.status-item:last-child {
+    border-right: 0;
+}
+
+.status-item span {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    color: #8c867d;
+}
+
+.status-item strong {
+    display: block;
+    margin: 24px 0 8px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.status-item p {
+    margin: 0;
+    font-size: 0.82rem;
+    color: #8c867d;
+}
+
+
+/* FOOTER */
+
+.dashboard-footer {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 32px;
+    border-top: 1px solid #c9c2b7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-footer span {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.22em;
+}
+
+.dashboard-footer p {
+    margin: 0;
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    color: #918b82;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .inteoffice-dashboard {
+        padding: 50px 28px 32px;
+    }
+
+    .dashboard-hero {
+        margin-bottom: 72px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-date {
+        text-align: left;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        min-height: 260px;
+        border-right: 0;
+        border-bottom: 1px solid #c9c2b7;
+    }
+
+    .dashboard-card:last-child {
+        border-bottom: 0;
+    }
+
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .status-item,
+    .status-item:not(:first-child) {
+        padding: 28px 0;
+        border-right: 0;
+        border-bottom: 1px solid #c9c2b7;
+    }
+
+    .dashboard-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
 }

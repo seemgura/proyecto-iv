@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +29,15 @@ Route::get('/', function () {
 */
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $totalProductos = \App\Models\Producto::count();
+    $totalPedidos = \App\Models\Pedido::count();
+    $totalUsuarios = \App\Models\User::count();
+
+    return view('dashboard', compact(
+        'totalProductos',
+        'totalPedidos',
+        'totalUsuarios'
+    ));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 /*
@@ -45,6 +55,23 @@ Route::middleware('auth')->group(function () {
     */
 
     Route::resource('productos', ProductoController::class);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Pedidos
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('pedidos', PedidoController::class);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Usuarios
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/usuarios', [UsuarioController::class, 'index'])
+        ->name('usuarios.index');
 
     /*
     |--------------------------------------------------------------------------

@@ -32,7 +32,8 @@
 
             <div class="dashboard-grid">
 
-                <article class="dashboard-card">
+                {{-- Productos --}}
+                <a href="{{ route('productos.index') }}" class="dashboard-card">
                     <span class="card-number">01</span>
 
                     <div>
@@ -45,9 +46,10 @@
                     </div>
 
                     <span class="card-arrow">→</span>
-                </article>
+                </a>
 
-                <article class="dashboard-card">
+                {{-- Pedidos --}}
+                <a href="{{ route('pedidos.index') }}" class="dashboard-card">
                     <span class="card-number">02</span>
 
                     <div>
@@ -60,22 +62,23 @@
                     </div>
 
                     <span class="card-arrow">→</span>
-                </article>
+                </a>
 
-                <article class="dashboard-card">
-                    <span class="card-number">03</span>
+                {{-- Usuarios --}}
+<a href="{{ route('usuarios.index') }}" class="dashboard-card">
+    <span class="card-number">03</span>
 
-                    <div>
-                        <p class="card-category">CLIENTES</p>
-                        <h3>Usuarios</h3>
-                        <p>
-                            Gestiona las cuentas registradas
-                            dentro de la plataforma.
-                        </p>
-                    </div>
+    <div>
+        <p class="card-category">CLIENTES</p>
+        <h3>Usuarios</h3>
+        <p>
+            Gestiona las cuentas registradas
+            dentro de la plataforma.
+        </p>
+    </div>
 
-                    <span class="card-arrow">→</span>
-                </article>
+    <span class="card-arrow">→</span>
+</a>
 
             </div>
         </section>
@@ -92,19 +95,19 @@
 
                 <div class="status-item">
                     <span>PRODUCTOS</span>
-                    <strong>—</strong>
+                    <strong>{{ $totalProductos }}</strong>
                     <p>Registrados</p>
                 </div>
 
                 <div class="status-item">
                     <span>PEDIDOS</span>
-                    <strong>—</strong>
+                    <strong>{{ $totalPedidos }}</strong>
                     <p>Recibidos</p>
                 </div>
 
                 <div class="status-item">
                     <span>USUARIOS</span>
-                    <strong>—</strong>
+                    <strong>{{ $totalUsuarios }}</strong>
                     <p>Registrados</p>
                 </div>
 

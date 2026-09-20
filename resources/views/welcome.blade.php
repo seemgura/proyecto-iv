@@ -4,10 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>InteOffice | Espacios que inspiran</title>
+<title>InteOffice | Espacios que inspiran</title>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+<link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}?v=2">
+<link rel="shortcut icon" href="{{ asset('favicon.svg') }}?v=2">
 
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+    
     <style>
         :root {
             --ink: #171715;
@@ -677,9 +680,9 @@ footer {
                 Productos
             </a>
 
-            <a class="nav-link" href="#nosotros">
-                Nosotros
-            </a>
+            <a class="nav-link" href="{{ route('nosotros') }}">
+    Nosotros
+</a>
         </nav>
 
         <a href="{{ url('/') }}" class="brand">
@@ -1095,9 +1098,9 @@ footer {
                         Colecciones
                     </a>
 
-                    <a href="#nosotros">
-                        Nosotros
-                    </a>
+                    <a href="{{ route('nosotros') }}">
+    Nosotros
+</a>
 
                 </div>
 

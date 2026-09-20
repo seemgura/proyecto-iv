@@ -262,30 +262,93 @@
 }
 
 
-/* RESPONSIVE */
+/* =========================================================
+   INTEOFFICE — DASHBOARD RESPONSIVE
+   ========================================================= */
 
 @media (max-width: 900px) {
 
     .inteoffice-dashboard {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
         padding: 50px 28px 32px;
     }
 
+    /* HERO */
+
     .dashboard-hero {
-        margin-bottom: 72px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto 72px;
+        padding-bottom: 42px;
+
         flex-direction: column;
         align-items: flex-start;
+        gap: 42px;
+    }
+
+    .dashboard-hero > div {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .dashboard-hero h1 {
+        width: 100%;
+        max-width: 100%;
+        font-size: clamp(2.8rem, 12vw, 4.5rem);
+        line-height: 0.96;
+        letter-spacing: -0.045em;
+        overflow-wrap: anywhere;
+    }
+
+    .dashboard-hero h1 span {
+        max-width: 100%;
+    }
+
+    .dashboard-intro {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 28px;
+        font-size: 0.95rem;
+        line-height: 1.7;
     }
 
     .dashboard-date {
+        width: 100%;
+        max-width: 100%;
         text-align: left;
     }
 
+    /* GESTIÓN */
+
+    .dashboard-section {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 80px;
+    }
+
+    .section-heading {
+        margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+        font-size: 2.25rem;
+    }
+
     .dashboard-grid {
+        width: 100%;
+        max-width: 100%;
         grid-template-columns: 1fr;
     }
 
     .dashboard-card {
-        min-height: 260px;
+        width: 100%;
+        min-width: 0;
+        min-height: 240px;
+        padding: 30px 0;
+
         border-right: 0;
         border-bottom: 1px solid #c9c2b7;
     }
@@ -294,20 +357,496 @@
         border-bottom: 0;
     }
 
+    .dashboard-card div {
+        min-width: 0;
+    }
+
+    .dashboard-card div > p:last-child {
+        max-width: 100%;
+    }
+
+    /* ESTADO DEL SISTEMA */
+
+    .dashboard-status {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 80px;
+    }
+
+    .status-heading {
+        margin-bottom: 36px;
+    }
+
+    .status-heading h2 {
+        font-size: 2.5rem;
+    }
+
     .status-grid {
+        width: 100%;
+        max-width: 100%;
         grid-template-columns: 1fr;
     }
 
     .status-item,
     .status-item:not(:first-child) {
+        width: 100%;
         padding: 28px 0;
+
         border-right: 0;
         border-bottom: 1px solid #c9c2b7;
     }
 
+    .status-item:last-child {
+        border-bottom: 0;
+    }
+
+    /* FOOTER */
+
     .dashboard-footer {
+        width: 100%;
+        max-width: 100%;
+
         align-items: flex-start;
         flex-direction: column;
+        gap: 14px;
+    }
+}
+
+
+/* TELÉFONOS PEQUEÑOS */
+
+@media (max-width: 600px) {
+
+    .dashboard-hero h1 span {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+.dashboard-hero h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: 2.65rem;
+}
+
+.dashboard-hero,
+.dashboard-hero > div,
+.dashboard-intro,
+.dashboard-date {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.inteoffice-dashboard {
+    box-sizing: border-box;
+}
+
+.inteoffice-dashboard * {
+    box-sizing: border-box;
+}
+
+    .inteoffice-dashboard {
+        padding: 42px 22px 28px;
+    }
+
+    .dashboard-hero {
+        margin-bottom: 62px;
+        gap: 36px;
+    }
+
+    .dashboard-eyebrow {
+        margin-bottom: 18px;
+        font-size: 0.62rem;
+    }
+
+    .dashboard-hero h1 {
+        font-size: clamp(2.6rem, 11.5vw, 3.6rem);
+        line-height: 0.97;
+    }
+
+    .dashboard-intro {
+        font-size: 0.9rem;
+    }
+
+    .dashboard-date span {
+        font-size: 1.05rem;
+    }
+
+    .dashboard-card {
+        min-height: 220px;
+    }
+
+    .dashboard-card h3 {
+        font-size: 2rem;
+    }
+
+    .status-item strong {
+        font-size: 3.4rem;
+    }
+}
+
+/* =========================================================
+   INTEOFFICE — PÁGINA INSTITUCIONAL
+   ========================================================= */
+
+.inteoffice-institutional {
+    min-height: 100vh;
+    background: #f3f0e9;
+    color: #171715;
+    padding: 0 6vw 36px;
+}
+
+.institutional-label {
+    margin: 0 0 22px;
+    color: #8c867d;
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+
+
+/* HERO */
+
+.institutional-hero {
+    max-width: 1280px;
+    min-height: 570px;
+    margin: 0 auto;
+    padding: 100px 0 55px;
+    border-bottom: 1px solid #c9c2b7;
+
+    display: grid;
+    grid-template-columns: 1.55fr 0.8fr;
+    align-items: end;
+    gap: 80px;
+}
+
+.institutional-hero-copy {
+    max-width: 760px;
+}
+
+.institutional-hero h1 {
+    margin: 0 0 34px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(4.5rem, 7vw, 7.4rem);
+    font-weight: 400;
+    line-height: 0.88;
+    letter-spacing: -0.055em;
+}
+
+.institutional-hero h1 em {
+    display: block;
+    font-weight: 400;
+}
+
+.institutional-intro {
+    max-width: 600px;
+    margin: 0;
+    color: #777168;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.institutional-brand {
+    padding-bottom: 8px;
+    text-align: right;
+}
+
+.institutional-brand span {
+    display: block;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.18em;
+}
+
+.institutional-brand p {
+    margin: 9px 0 0;
+    color: #8c867d;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+}
+
+
+/* QUIÉNES SOMOS */
+
+.about-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 100px 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    align-items: start;
+
+    border-bottom: 1px solid #c9c2b7;
+}
+
+.about-heading h2,
+.quality-section h2,
+.location-section h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(3.2rem, 5vw, 5.3rem);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+}
+
+.about-heading h2 em,
+.quality-section h2 em,
+.location-section h2 em {
+    display: block;
+    font-weight: 400;
+}
+
+.about-copy {
+    padding-top: 48px;
+}
+
+.about-copy p,
+.quality-copy p,
+.location-copy > p:last-child {
+    max-width: 600px;
+    margin: 0 0 22px;
+    color: #777168;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+
+/* MISIÓN Y VISIÓN */
+
+.mission-vision {
+    max-width: 1280px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    border-bottom: 1px solid #c9c2b7;
+}
+
+.mission-vision article {
+    min-height: 430px;
+    padding: 75px 70px 75px 0;
+}
+
+.mission-vision article + article {
+    padding-right: 0;
+    padding-left: 70px;
+    border-left: 1px solid #c9c2b7;
+}
+
+.mission-vision h2 {
+    margin: 0 0 28px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.6rem, 4vw, 4.1rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.mission-vision article > p:last-child {
+    max-width: 520px;
+    margin: 0;
+    color: #777168;
+    font-size: 0.92rem;
+    line-height: 1.75;
+}
+
+
+/* POLÍTICA DE CALIDAD */
+
+.quality-section {
+    margin-left: -6vw;
+    margin-right: -6vw;
+    padding: 90px max(6vw, calc((100vw - 1280px) / 2));
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    align-items: center;
+
+    background: #171715;
+    color: #f3f0e9;
+}
+
+.quality-section .institutional-label {
+    color: #b8b1a7;
+}
+
+.quality-section h2 {
+    color: #f3f0e9;
+}
+
+.quality-copy {
+    padding-top: 25px;
+}
+
+.quality-copy p {
+    color: #bdb6ac;
+}
+
+
+/* UBICACIÓN */
+
+.location-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 0 70px;
+
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 90px;
+    align-items: end;
+
+    border-bottom: 1px solid #c9c2b7;
+}
+
+.location-section h2 {
+    margin-bottom: 28px;
+    font-size: clamp(2.8rem, 4.5vw, 4.6rem);
+}
+
+.location-card {
+    padding: 32px 0 10px 55px;
+    border-top: 1px solid #c9c2b7;
+    border-left: 1px solid #c9c2b7;
+}
+
+.location-card strong {
+    display: block;
+    margin-bottom: 15px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 3vw, 3.2rem);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+}
+
+.location-card > p:last-child {
+    margin: 0;
+    color: #777168;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+
+/* FOOTER */
+
+.institutional-footer {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 30px 0 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.institutional-footer span {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.22em;
+}
+
+.institutional-footer p {
+    margin: 0;
+    color: #918b82;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .inteoffice-institutional {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+    .institutional-hero {
+        min-height: auto;
+        padding: 75px 0 50px;
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .institutional-brand {
+        text-align: left;
+    }
+
+    .about-section,
+    .location-section {
+        padding: 75px 0;
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .about-copy {
+        padding-top: 0;
+    }
+
+    .mission-vision {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-vision article,
+    .mission-vision article + article {
+        min-height: auto;
+        padding: 70px 0;
+    }
+
+    .mission-vision article + article {
+        border-top: 1px solid #c9c2b7;
+        border-left: 0;
+    }
+
+    .quality-section {
+        margin-left: -28px;
+        margin-right: -28px;
+        padding: 75px 28px;
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .quality-copy {
+        padding-top: 0;
+    }
+
+    .location-card {
+        padding-left: 0;
+        border-left: 0;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .institutional-hero h1 {
+        font-size: clamp(3.8rem, 18vw, 5.5rem);
+    }
+
+    .about-heading h2,
+    .quality-section h2,
+    .location-section h2 {
+        font-size: clamp(2.8rem, 13vw, 4rem);
+    }
+
+    .mission-vision h2 {
+        font-size: clamp(2.6rem, 12vw, 3.7rem);
+    }
+
+    .institutional-footer {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 14px;
     }
 }

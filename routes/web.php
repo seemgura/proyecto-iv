@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('welcome', compact('productosDestacados'));
 });
 
+Route::get('/nosotros', function () {
+    return view('institucional.nosotros');
+})->name('nosotros');
+
 /*
 |--------------------------------------------------------------------------
 | Panel administrativo

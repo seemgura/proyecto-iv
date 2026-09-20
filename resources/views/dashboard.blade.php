@@ -26,7 +26,6 @@
         {{-- Navegación principal --}}
         <section class="dashboard-section">
             <div class="section-heading">
-                <span>01</span>
                 <h2>Gestión</h2>
             </div>
 
@@ -34,7 +33,7 @@
 
                 {{-- Productos --}}
                 <a href="{{ route('productos.index') }}" class="dashboard-card">
-                    <span class="card-number">01</span>
+    
 
                     <div>
                         <p class="card-category">CATÁLOGO</p>
@@ -50,7 +49,6 @@
 
                 {{-- Pedidos --}}
                 <a href="{{ route('pedidos.index') }}" class="dashboard-card">
-                    <span class="card-number">02</span>
 
                     <div>
                         <p class="card-category">VENTAS</p>
@@ -66,7 +64,6 @@
 
                 {{-- Usuarios --}}
 <a href="{{ route('usuarios.index') }}" class="dashboard-card">
-    <span class="card-number">03</span>
 
     <div>
         <p class="card-category">CLIENTES</p>

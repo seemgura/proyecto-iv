@@ -26,6 +26,10 @@ Route::get('/nosotros', function () {
     return view('institucional.nosotros');
 })->name('nosotros');
 
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
+
 /*
 |--------------------------------------------------------------------------
 | Panel administrativo

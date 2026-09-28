@@ -545,6 +545,27 @@ footer {
     text-transform: uppercase;
 }
 
+.footer-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+.footer-social span {
+    color: var(--muted);
+}
+
+.footer-social a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity .2s ease;
+}
+
+.footer-social a:hover {
+    opacity: .5;
+}
+
         /* =========================================================
            RESPONSIVE
            ========================================================= */
@@ -662,6 +683,171 @@ footer {
                 flex-direction: column;
                 gap: 15px;
             }
+
+            }
+
+/* =========================================================
+   CHAT INTEOFFICE
+   ========================================================= */
+
+.chat-launcher {
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+    z-index: 100;
+    width: 58px;
+    height: 58px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 12px 35px rgba(23, 23, 21, .18);
+    transition: transform .25s ease, background .25s ease;
+}
+
+.chat-launcher:hover {
+    transform: translateY(-3px);
+    background: #383630;
+}
+
+.chat-launcher svg {
+    width: 22px;
+    height: 22px;
+}
+
+.chat-panel {
+    position: fixed;
+    right: 28px;
+    bottom: 100px;
+    z-index: 100;
+    width: min(380px, calc(100vw - 40px));
+    background: var(--paper-light);
+    border: 1px solid var(--line);
+    box-shadow: 0 20px 60px rgba(23, 23, 21, .16);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: opacity .25s ease,
+                transform .25s ease,
+                visibility .25s ease;
+}
+
+.chat-panel.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.chat-header {
+    padding: 24px;
+    background: var(--ink);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.chat-header-copy span {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 8px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: #bdb4a8;
+}
+
+.chat-header-copy strong {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.chat-close {
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.chat-messages {
+    height: 300px;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.chat-message {
+    max-width: 85%;
+    padding: 13px 15px;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.chat-message.bot {
+    align-self: flex-start;
+    background: #e9e3d9;
+}
+
+.chat-message.user {
+    align-self: flex-end;
+    background: var(--ink);
+    color: #fff;
+}
+
+.chat-form {
+    padding: 18px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+}
+
+.chat-input {
+    min-width: 0;
+    padding: 13px 14px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    outline: none;
+    font: inherit;
+    font-size: 13px;
+}
+
+.chat-input:focus {
+    border-color: var(--ink);
+}
+
+.chat-send {
+    border: 0;
+    padding: 0 18px;
+    background: var(--ink);
+    color: #fff;
+    cursor: pointer;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+    .chat-launcher {
+        right: 18px;
+        bottom: 18px;
+    }
+
+    .chat-panel {
+        right: 18px;
+        bottom: 88px;
+        width: calc(100vw - 36px);
+    }
+}
         }
     </style>
 </head>
@@ -1121,9 +1307,9 @@ footer {
                         Envíos
                     </a>
 
-                    <a href="#">
-                        Preguntas frecuentes
-                    </a>
+                    <a href="{{ route('faq') }}">
+    Preguntas frecuentes
+</a>
 
                     <a href="#">
                         Contacto
@@ -1168,6 +1354,7 @@ footer {
 
                 </div>
 
+                
             </div>
 
         </div>
@@ -1175,19 +1362,319 @@ footer {
 
         <div class="footer-bottom">
 
-            <span>
-                © {{ date('Y') }} InteOffice
-            </span>
+    <span>
+        © {{ date('Y') }} InteOffice
+    </span>
 
-            <span>
-                Mobiliario · Diseño · Espacios
-            </span>
+    <div class="footer-social">
+        <span>Síguenos</span>
 
-        </div>
+        <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Instagram
+        </a>
+
+        <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Facebook
+        </a>
+
+        <a
+            href="https://www.pinterest.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Pinterest
+        </a>
+    </div>
+
+    <span>
+        Mobiliario · Diseño · Espacios
+    </span>
+
+</div>
 
     </div>
 
 </footer>
+
+<!-- =============================================================
+     CHAT INTEOFFICE
+     ============================================================= -->
+
+<div
+    class="chat-panel"
+    id="chatPanel"
+    aria-hidden="true"
+>
+    <div class="chat-header">
+        <div class="chat-header-copy">
+            <span>Atención InteOffice</span>
+            <strong>¿Cómo podemos ayudarte?</strong>
+        </div>
+
+        <button
+            class="chat-close"
+            id="chatClose"
+            type="button"
+            aria-label="Cerrar chat"
+        >
+            ×
+        </button>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+        <div class="chat-message bot">
+            ¡Hola! Soy el asistente de InteOffice.
+            ¿En qué podemos ayudarte hoy?
+        </div>
+    </div>
+
+    <form class="chat-form" id="chatForm">
+        <input
+            class="chat-input"
+            id="chatInput"
+            type="text"
+            placeholder="Escribe tu mensaje..."
+            autocomplete="off"
+            aria-label="Mensaje"
+        >
+
+        <button
+            class="chat-send"
+            type="submit"
+        >
+            Enviar
+        </button>
+    </form>
+</div>
+
+<button
+    class="chat-launcher"
+    id="chatLauncher"
+    type="button"
+    aria-label="Abrir chat"
+    aria-expanded="false"
+>
+    <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        aria-hidden="true"
+    >
+        <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
+    </svg>
+</button>
+
+<script>
+    const chatLauncher = document.getElementById('chatLauncher');
+    const chatPanel = document.getElementById('chatPanel');
+    const chatClose = document.getElementById('chatClose');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
+
+    function openChat() {
+        chatPanel.classList.add('is-open');
+        chatPanel.setAttribute('aria-hidden', 'false');
+        chatLauncher.setAttribute('aria-expanded', 'true');
+
+        setTimeout(() => {
+            chatInput.focus();
+        }, 250);
+    }
+
+    function closeChat() {
+        chatPanel.classList.remove('is-open');
+        chatPanel.setAttribute('aria-hidden', 'true');
+        chatLauncher.setAttribute('aria-expanded', 'false');
+    }
+
+    function addMessage(message, type) {
+        const messageElement = document.createElement('div');
+
+        messageElement.classList.add('chat-message', type);
+        messageElement.textContent = message;
+
+        chatMessages.appendChild(messageElement);
+
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function getAutomaticResponse(message) {
+    const text = message
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
+    const includesAny = (words) => {
+        return words.some(word => text.includes(word));
+    };
+
+    // Productos y mobiliario
+    if (includesAny([
+        'producto',
+        'productos',
+        'mueble',
+        'muebles',
+        'escritorio',
+        'escritorios',
+        'silla',
+        'sillas',
+        'almacenamiento',
+        'iluminacion',
+        'accesorio',
+        'accesorios'
+    ])) {
+        return 'Claro. En InteOffice contamos con mobiliario y accesorios para espacios de trabajo. Puedes consultar nuestra selección de productos y colecciones. ¿Buscas algún tipo de mueble en particular?';
+    }
+
+    // Precios y cotizaciones
+    if (includesAny([
+        'precio',
+        'precios',
+        'cuanto cuesta',
+        'cuanto vale',
+        'costo',
+        'costos',
+        'cotizacion',
+        'cotizar'
+    ])) {
+        return 'Los precios se muestran en cada producto disponible. Si necesitas una cotización para varios artículos o un proyecto específico, podemos ayudarte a solicitar atención personalizada.';
+    }
+
+    // Envíos y entregas
+    if (includesAny([
+        'envio',
+        'envios',
+        'entrega',
+        'entregas',
+        'mandan',
+        'enviar'
+    ])) {
+        return 'InteOffice contempla servicio de entrega para sus pedidos. La cobertura y el tiempo de entrega dependen de la ubicación y de los productos seleccionados.';
+    }
+
+    // Pagos
+    if (includesAny([
+        'pago',
+        'pagos',
+        'pagar',
+        'tarjeta',
+        'transferencia',
+        'metodo de pago'
+    ])) {
+        return 'InteOffice contempla diferentes opciones de pago para facilitar las compras. Las alternativas disponibles se mostrarán durante el proceso de compra.';
+    }
+
+    // Devoluciones y cambios
+    if (includesAny([
+        'devolucion',
+        'devolver',
+        'cambio',
+        'cambiar',
+        'reembolso',
+        'garantia'
+    ])) {
+        return 'Si necesitas realizar un cambio, devolución o solicitar información sobre una garantía, podemos orientarte de acuerdo con las condiciones aplicables al producto.';
+    }
+
+    // Disponibilidad
+    if (includesAny([
+        'disponible',
+        'disponibilidad',
+        'existencia',
+        'stock',
+        'inventario'
+    ])) {
+        return 'La disponibilidad puede variar según el producto. En el catálogo podrás consultar los artículos publicados y su información correspondiente.';
+    }
+
+    // Ubicación
+    if (includesAny([
+        'ubicacion',
+        'donde estan',
+        'donde se encuentran',
+        'tienda',
+        'guadalajara',
+        'jalisco'
+    ])) {
+        return 'InteOffice opera mediante una plataforma digital y contempla su operación comercial en Guadalajara, Jalisco, México.';
+    }
+
+    // Contacto y atención humana
+    if (includesAny([
+        'contacto',
+        'contactar',
+        'asesor',
+        'asesoria',
+        'persona',
+        'humano',
+        'ayuda personalizada'
+    ])) {
+        return 'Con gusto. Podemos canalizar tu solicitud con el equipo de InteOffice para brindarte atención personalizada.';
+    }
+
+    // Agradecimientos y despedidas
+    if (includesAny([
+        'gracias',
+        'muchas gracias',
+        'adios',
+        'hasta luego'
+    ])) {
+        return '¡Con gusto! Gracias por visitar InteOffice. Estamos para ayudarte a crear un mejor espacio de trabajo.';
+    }
+
+    // Saludos: se evalúan después de las intenciones importantes
+    if (includesAny([
+        'hola',
+        'buen dia',
+        'buenas tardes',
+        'buenas noches',
+        'buenas'
+    ])) {
+        return '¡Hola! Bienvenido a InteOffice. Puedo ayudarte con productos, precios, envíos, pagos, disponibilidad, ubicación y atención personalizada. ¿Qué te gustaría consultar?';
+    }
+
+    // Respuesta general
+    return 'Quiero ayudarte con tu consulta. Puedes preguntarme sobre productos, precios, envíos, pagos, disponibilidad, devoluciones, ubicación o atención personalizada.';
+}
+
+    chatLauncher.addEventListener('click', () => {
+        if (chatPanel.classList.contains('is-open')) {
+            closeChat();
+        } else {
+            openChat();
+        }
+    });
+
+    chatClose.addEventListener('click', closeChat);
+
+    chatForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const message = chatInput.value.trim();
+
+        if (!message) {
+            return;
+        }
+
+        addMessage(message, 'user');
+        chatInput.value = '';
+
+        setTimeout(() => {
+            const response = getAutomaticResponse(message);
+            addMessage(response, 'bot');
+        }, 600);
+    });
+</script>
 
 </body>
 </html>

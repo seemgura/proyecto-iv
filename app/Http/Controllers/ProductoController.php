@@ -6,7 +6,6 @@ use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 
 class ProductoController extends Controller
 {
@@ -66,8 +65,33 @@ class ProductoController extends Controller
      * Mostrar un producto.
      */
     public function show(Producto $producto)
+{
+    $promedioValoracion = $producto->valoraciones()->avg('puntuacion');
+    $totalValoraciones = $producto->valoraciones()->count();
+
+    return view('productos.show', compact(
+        'producto',
+        'promedioValoracion',
+        'totalValoraciones'
+    ));
+}
+
+    /**
+     * Guardar la valoración de un producto.
+     */
+    public function valorar(Request $request, Producto $producto)
     {
-        return view('productos.show', compact('producto'));
+        $datos = $request->validate([
+            'puntuacion' => ['required', 'integer', 'between:1,5'],
+        ]);
+
+        $producto->valoraciones()->create([
+            'puntuacion' => $datos['puntuacion'],
+        ]);
+
+        return redirect()
+            ->route('productos.show', $producto)
+            ->with('success', 'Gracias por tu valoración.');
     }
 
     /**

@@ -125,7 +125,7 @@
            ========================================================= */
 
         .hero {
-            min-height: calc(100vh - 88px);
+            min-height: 650px;
             display: grid;
             grid-template-columns: 46% 54%;
             border-bottom: 1px solid var(--line);
@@ -209,7 +209,7 @@
 
         .hero-visual {
             position: relative;
-            min-height: 720px;
+            min-height: 650px;
             overflow: hidden;
             background: #c8b9a6;
         }
@@ -223,6 +223,15 @@
             object-position: 55% center;
             display: block;
         }
+
+        .hero-slide {
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
 
         /*
          * Capa tonal muy discreta.
@@ -243,16 +252,15 @@
             pointer-events: none;
         }
 
-        .hero-visual::after {
-            content: "01";
-            position: absolute;
-            z-index: 2;
-            right: 38px;
-            bottom: 35px;
-            color: rgba(255, 255, 255, .85);
-            font-size: 10px;
-            letter-spacing: .35em;
-        }
+        .hero-counter {
+    position: absolute;
+    z-index: 2;
+    right: 38px;
+    bottom: 35px;
+    color: rgba(255, 255, 255, .85);
+    font-size: 10px;
+    letter-spacing: .35em;
+}
 
         .visual-copy {
             position: absolute;
@@ -970,23 +978,32 @@ footer {
 
         <div class="hero-visual">
 
-            <img
-                src="{{ asset('images/home/hero.jpg') }}"
-                alt="Mobiliario contemporáneo InteOffice"
-                class="hero-image"
-            >
+    <img
+        src="{{ asset('images/home/hero.jpg') }}"
+        alt="Oficina contemporánea InteOffice"
+        class="hero-image hero-slide active"
+    >
 
-            <div class="visual-copy">
-                <span>
-                    Colección 01
-                </span>
+    <img
+        src="{{ asset('images/home/hero-02.jpg') }}"
+        alt="Espacio de trabajo cálido InteOffice"
+        class="hero-image hero-slide"
+    >
 
-                <strong>
-                    Líneas esenciales
-                </strong>
-            </div>
+    <img
+        src="{{ asset('images/home/hero-03.jpg') }}"
+        alt="Oficina moderna InteOffice"
+        class="hero-image hero-slide"
+    >
 
-        </div>
+    <div class="visual-copy">
+    <span id="heroCollection">Colección 01</span>
+    <strong id="heroTitle">Líneas esenciales</strong>
+</div>
+
+<div class="hero-counter" id="heroCounter">01</div>
+
+</div>
 
     </section>
 
@@ -1674,6 +1691,45 @@ footer {
             addMessage(response, 'bot');
         }, 600);
     });
+
+    // Slider automático del hero
+const heroSlides = document.querySelectorAll('.hero-slide');
+let currentHeroSlide = 0;
+const heroCollection = document.getElementById('heroCollection');
+const heroTitle = document.getElementById('heroTitle');
+const heroCounter = document.getElementById('heroCounter');
+
+const heroContent = [
+    {
+        collection: 'Colección 01',
+        title: 'Líneas esenciales'
+    },
+    {
+        collection: 'Colección 02',
+        title: 'Calidez contemporánea'
+    },
+    {
+        collection: 'Colección 03',
+        title: 'Espacios con carácter'
+    }
+];
+
+function showNextHeroSlide() {
+    heroSlides[currentHeroSlide].classList.remove('active');
+
+    currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+
+    heroSlides[currentHeroSlide].classList.add('active');
+
+    heroCollection.textContent = heroContent[currentHeroSlide].collection;
+    heroTitle.textContent = heroContent[currentHeroSlide].title;
+    heroCounter.textContent = String(currentHeroSlide + 1).padStart(2, '0');
+}
+
+if (heroSlides.length > 1) {
+    setInterval(showNextHeroSlide, 5000);
+} 
+
 </script>
 
 </body>

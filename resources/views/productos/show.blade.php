@@ -1,201 +1,319 @@
 <x-app-layout>
     <style>
+    .product-show {
+        min-height: calc(100vh - 80px);
+        background: #f4f2ee;
+        color: #171715;
+        padding: 70px 32px 80px;
+    }
+
+    .show-container {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 38px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #9a948b;
+        color: #777168;
+        font-size: 10px;
+        letter-spacing: .28em;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    /* FICHA DEL PRODUCTO */
+    .product-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 480px;
+        background: #faf8f4;
+        border: 1px solid #ddd7ce;
+        overflow: hidden;
+    }
+
+    /* IMAGEN */
+    .product-photo {
+        height: 480px;
+        background: #ebe6dd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .product-photo img {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        object-fit: cover;
+    }
+
+    .no-image {
+        color: #a09a91;
+        font-size: 10px;
+        letter-spacing: .28em;
+        text-transform: uppercase;
+    }
+
+    /* INFORMACIÓN DEL PRODUCTO */
+    .product-content {
+        height: 480px;
+        box-sizing: border-box;
+        padding: 24px 40px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .category {
+        margin-bottom: 10px;
+        color: #989188;
+        font-size: 9px;
+        letter-spacing: .35em;
+        text-transform: uppercase;
+    }
+
+    .product-title {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(36px, 3.5vw, 52px);
+        line-height: .98;
+        font-weight: 400;
+        letter-spacing: -.035em;
+    }
+
+    .description {
+        margin: 14px 0;
+        color: #716b63;
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    /* ESTADO Y DESTACADO */
+    .badges {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .badge {
+        padding: 9px 15px;
+        border: 1px solid #d3ccc2;
+        font-size: 8px;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+    }
+
+    .badge.active {
+        background: #171715;
+        border-color: #171715;
+        color: white;
+    }
+
+    /* VALORACIÓN DEL PRODUCTO */
+    .rating-section {
+        margin-bottom: 12px;
+        padding: 15px 0 12px;
+        border-top: 1px solid #ddd7ce;
+    }
+
+    .rating-label,
+    .rating-question {
+        color: #989188;
+        font-size: 8px;
+        letter-spacing: .3em;
+        text-transform: uppercase;
+    }
+
+    .rating-success {
+        margin-top: 8px;
+        color: #6f765f;
+        font-size: 11px;
+    }
+
+    .rating-summary {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 10px;
+    }
+
+    .rating-average {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 36px;
+        line-height: 1;
+    }
+
+    .rating-display {
+        display: flex;
+        gap: 3px;
+        color: #c9c2b8;
+        font-size: 16px;
+    }
+
+    .rating-display .filled {
+        color: #171715;
+    }
+
+    .rating-count {
+        margin-top: 3px;
+        color: #989188;
+        font-size: 9px;
+        letter-spacing: .08em;
+    }
+
+    .rating-form {
+        margin-top: 14px;
+    }
+
+    .rating-input {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 4px;
+        margin-top: 8px;
+        width: fit-content;
+    }
+
+    .rating-input button {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: #c9c2b8;
+        cursor: pointer;
+        font-size: 23px;
+        line-height: 1;
+        transition:
+            color .2s ease,
+            transform .2s ease;
+    }
+
+    .rating-input:hover button {
+        color: #171715;
+    }
+
+    .rating-input button:hover ~ button {
+        color: #c9c2b8;
+    }
+
+    .rating-input button:hover {
+        transform: translateY(-2px);
+    }
+
+    .rating-input button:focus-visible {
+        outline: 1px solid #171715;
+        outline-offset: 4px;
+    }
+
+    /* PRECIO Y DISPONIBILIDAD */
+    .details {
+        margin-top: auto;
+        padding: 14px 0;
+        border-top: 1px solid #ddd7ce;
+        border-bottom: 1px solid #ddd7ce;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .detail-label {
+        margin-bottom: 6px;
+        color: #9a948b;
+        font-size: 8px;
+        letter-spacing: .3em;
+        text-transform: uppercase;
+    }
+
+    .price {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 28px;
+        line-height: 1;
+    }
+
+    .stock {
+        font-size: 15px;
+    }
+
+    /* ACCIONES */
+    .actions {
+        margin-top: 12px;
+        padding-top: 0;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .edit-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 170px;
+        min-height: 42px;
+        padding: 0 24px;
+        background: #171715;
+        color: white;
+        font-size: 8px;
+        letter-spacing: .3em;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .delete-form {
+        margin: 0;
+    }
+
+    .delete-button {
+        padding: 0 0 5px;
+        border: 0;
+        border-bottom: 1px solid transparent;
+        background: transparent;
+        color: #934c42;
+        cursor: pointer;
+        font-size: 8px;
+        letter-spacing: .25em;
+        text-transform: uppercase;
+    }
+
+    .delete-button:hover {
+        border-bottom-color: #934c42;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 850px) {
         .product-show {
-            min-height: calc(100vh - 80px);
-            background: #f4f2ee;
-            color: #171715;
-            padding: 70px 32px 100px;
-        }
-
-        .show-container {
-            width: min(1180px, 100%);
-            margin: 0 auto;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 38px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #9a948b;
-            color: #777168;
-            font-size: 10px;
-            letter-spacing: .28em;
-            text-transform: uppercase;
-            text-decoration: none;
+            padding: 45px 20px 70px;
         }
 
         .product-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: #faf8f4;
-            border: 1px solid #ddd7ce;
+            grid-template-columns: 1fr;
+            height: auto;
+            overflow: visible;
         }
 
         .product-photo {
-            min-height: 650px;
-            background: #ebe6dd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            height: 420px;
         }
 
         .product-photo img {
-            width: 100%;
-            height: 100%;
-            min-height: 650px;
-            object-fit: cover;
-        }
-
-        .no-image {
-            color: #a09a91;
-            font-size: 10px;
-            letter-spacing: .28em;
-            text-transform: uppercase;
+            min-height: 0;
         }
 
         .product-content {
-            padding: 70px 65px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .category {
-            margin-bottom: 24px;
-            color: #989188;
-            font-size: 10px;
-            letter-spacing: .35em;
-            text-transform: uppercase;
-        }
-
-        .product-title {
-            margin: 0;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(44px, 5vw, 72px);
-            line-height: .98;
-            font-weight: 400;
-            letter-spacing: -.035em;
-        }
-
-        .description {
-            margin: 35px 0;
-            color: #716b63;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        .badges {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 48px;
-        }
-
-        .badge {
-            padding: 12px 18px;
-            border: 1px solid #d3ccc2;
-            font-size: 9px;
-            letter-spacing: .22em;
-            text-transform: uppercase;
-        }
-
-        .badge.active {
-            background: #171715;
-            border-color: #171715;
-            color: white;
+            height: auto;
+            padding: 35px 30px;
         }
 
         .details {
-            padding: 35px 0;
-            border-top: 1px solid #ddd7ce;
-            border-bottom: 1px solid #ddd7ce;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .detail-label {
-            margin-bottom: 10px;
-            color: #9a948b;
-            font-size: 9px;
-            letter-spacing: .3em;
-            text-transform: uppercase;
-        }
-
-        .price {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 34px;
-        }
-
-        .stock {
-            font-size: 17px;
+            margin-top: 20px;
         }
 
         .actions {
-            margin-top: auto;
-            padding-top: 45px;
-            display: flex;
-            align-items: center;
-            gap: 28px;
+            margin-top: 20px;
         }
-
-        .edit-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 190px;
-            min-height: 55px;
-            padding: 0 28px;
-            background: #171715;
-            color: white;
-            font-size: 9px;
-            letter-spacing: .3em;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-
-        .delete-form {
-            margin: 0;
-        }
-
-        .delete-button {
-            padding: 0 0 5px;
-            border: 0;
-            border-bottom: 1px solid transparent;
-            background: transparent;
-            color: #934c42;
-            cursor: pointer;
-            font-size: 9px;
-            letter-spacing: .25em;
-            text-transform: uppercase;
-        }
-
-        .delete-button:hover {
-            border-bottom-color: #934c42;
-        }
-
-        @media (max-width: 850px) {
-            .product-show {
-                padding: 45px 20px 70px;
-            }
-
-            .product-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .product-photo,
-            .product-photo img {
-                min-height: 420px;
-            }
-
-            .product-content {
-                padding: 45px 30px;
-            }
-
-            .actions {
-                margin-top: 45px;
-            }
-        }
-    </style>
+    }
+</style>
 
     <div class="product-show">
         <div class="show-container">
@@ -246,6 +364,70 @@
                         @endif
 
                     </div>
+
+                    <div class="rating-section">
+
+    <div class="rating-label">
+        Valoración del producto
+    </div>
+
+    @if (session('success'))
+        <div class="rating-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <div class="rating-summary">
+
+        <div class="rating-average">
+            @if ($totalValoraciones > 0)
+                {{ number_format($promedioValoracion, 1) }}
+            @else
+                —
+            @endif
+        </div>
+
+        <div>
+            <div class="rating-display">
+                @for ($i = 1; $i <= 5; $i++)
+                    <span class="{{ $promedioValoracion >= $i ? 'filled' : '' }}">★</span>
+                @endfor
+            </div>
+
+            <div class="rating-count">
+                {{ $totalValoraciones }}
+                {{ $totalValoraciones === 1 ? 'valoración' : 'valoraciones' }}
+            </div>
+        </div>
+
+    </div>
+
+    <form
+        action="{{ route('productos.valorar', $producto) }}"
+        method="POST"
+        class="rating-form"
+    >
+        @csrf
+
+        <div class="rating-question">
+            ¿Qué te pareció este producto?
+        </div>
+
+        <div class="rating-input">
+            @for ($i = 1; $i <= 5; $i++)
+                <button
+                    type="submit"
+                    name="puntuacion"
+                    value="{{ $i }}"
+                    aria-label="Valorar con {{ $i }} {{ $i === 1 ? 'estrella' : 'estrellas' }}"
+                >
+                    ★
+                </button>
+            @endfor
+        </div>
+    </form>
+
+</div>
 
                     <div class="details">
 

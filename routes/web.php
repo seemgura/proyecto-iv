@@ -32,6 +32,25 @@ Route::get('/faq', function () {
 
 /*
 |--------------------------------------------------------------------------
+| Productos públicos
+|--------------------------------------------------------------------------
+|
+| Los visitantes pueden consultar el catálogo, abrir la ficha de un
+| producto y registrar una valoración sin iniciar sesión.
+|
+*/
+
+Route::get('/productos', [ProductoController::class, 'index'])
+    ->name('productos.index');
+
+Route::get('/productos/{producto}', [ProductoController::class, 'show'])
+    ->name('productos.show');
+
+Route::post('/productos/{producto}/valorar', [ProductoController::class, 'valorar'])
+    ->name('productos.valorar');
+
+/*
+|--------------------------------------------------------------------------
 | Panel administrativo
 |--------------------------------------------------------------------------
 */
@@ -60,9 +79,14 @@ Route::middleware('auth')->group(function () {
     |--------------------------------------------------------------------------
     | Productos
     |--------------------------------------------------------------------------
+    |
+    | La consulta del catálogo y de cada producto es pública.
+    | Crear, editar, actualizar y eliminar requieren autenticación.
+    |
     */
 
-    Route::resource('productos', ProductoController::class);
+    Route::resource('productos', ProductoController::class)
+        ->except(['index', 'show']);
 
     /*
     |--------------------------------------------------------------------------

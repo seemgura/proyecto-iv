@@ -464,8 +464,9 @@
                             @if ($producto->imagen)
 
                                 <img
-                                    src="{{ asset('storage/' . $producto->imagen) }}"
-                                    alt="{{ $producto->nombre }}"
+src="{{ str_starts_with($producto->imagen, 'images/')
+    ? asset($producto->imagen)
+    : asset('storage/' . $producto->imagen) }}"                                    alt="{{ $producto->nombre }}"
                                 >
 
                             @else

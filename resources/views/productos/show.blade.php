@@ -325,15 +325,17 @@
             <article class="product-layout">
 
                 <div class="product-photo">
-                    @if ($producto->imagen)
-                        <img
-                            src="{{ asset('storage/' . $producto->imagen) }}"
-                            alt="{{ $producto->nombre }}"
-                        >
-                    @else
-                        <span class="no-image">Sin imagen</span>
-                    @endif
-                </div>
+    @if ($producto->imagen)
+        <img
+            src="{{ str_starts_with($producto->imagen, 'images/')
+                ? asset($producto->imagen)
+                : asset('storage/' . $producto->imagen) }}"
+            alt="{{ $producto->nombre }}"
+        >
+    @else
+        <span class="no-image">Sin imagen</span>
+                  @endif
+             </div>
 
                 <div class="product-content">
 

@@ -857,6 +857,192 @@ footer {
     }
 }
         }
+/* ==========================================
+   INSPIRACIÓN: GALERÍA DE IMÁGENES Y VIDEOS
+   ========================================== */ 
+   /* Sección Inspiración */
+.inspiracion {
+    padding: 100px 0;
+    background-color: #f4f0ea;
+}
+
+.inspiracion-encabezado {
+    margin-bottom: 48px;
+}
+
+.inspiracion-etiqueta {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #8a8178;
+}
+
+.inspiracion-titulo {
+    margin: 0 0 20px;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: #191919;
+}
+
+.inspiracion-descripcion {
+    max-width: 560px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #66615b;
+}   
+/* Galería de imágenes */
+.inspiracion-galeria {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 64px;
+}
+
+.inspiracion-imagen {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background-color: #e5dfd6;
+}
+
+.inspiracion-imagen img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.inspiracion-imagen:hover img {
+    transform: scale(1.05);
+}
+
+/* Adaptación a tabletas y teléfonos */
+@media (max-width: 768px) {
+    .inspiracion {
+        padding: 64px 0;
+    }
+
+    .inspiracion-galeria {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inspiracion-galeria {
+        grid-template-columns: 1fr;
+    }
+}
+/* Visor de imágenes (Lightbox) */
+.inspiracion-lightbox:not([hidden]) {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    background: rgba(0, 0, 0, 0.92);
+}
+
+.inspiracion-lightbox[hidden] {
+    display: none;
+}
+
+.inspiracion-lightbox-imagen {
+    display: block;
+    max-width: 100%;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.inspiracion-lightbox-cerrar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 1;
+    padding: 8px 14px;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 40px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.inspiracion-lightbox-cerrar:hover {
+    opacity: 0.7;
+}
+
+.inspiracion-lightbox-cerrar:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+    .inspiracion-lightbox:not([hidden]) {
+        padding: 60px 16px;
+    }
+
+    .inspiracion-lightbox-cerrar {
+        top: 12px;
+        right: 12px;
+    }
+}
+/* Videos de inspiración */
+.inspiracion-videos {
+    margin-top: 90px;
+}
+
+.inspiracion-videos-encabezado {
+    margin-bottom: 32px;
+}
+
+.inspiracion-videos-encabezado h3 {
+    margin: 14px 0 0;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+.inspiracion-videos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.inspiracion-video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+.inspiracion-video iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media (max-width: 768px) {
+    .inspiracion-videos {
+        margin-top: 60px;
+    }
+
+    .inspiracion-videos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
     </style>
 </head>
 
@@ -1257,6 +1443,102 @@ footer {
 
     </section>
 
+<!-- INSPIRACIÓN: GALERÍA DE IMÁGENES Y VIDEOS -->
+<section class="inspiracion" id="inspiracion">
+    <div class="container">
+        <div class="inspiracion-encabezado">
+            <span class="inspiracion-etiqueta">03 / INSPIRACIÓN</span>
+            <h2 class="inspiracion-titulo serif">
+                Espacios que inspiran.
+            </h2>
+            <p class="inspiracion-descripcion">
+                Ideas, materiales y ambientes que transforman
+                nuestra manera de trabajar.
+            </p>
+        </div>
+
+        <div class="inspiracion-galeria">
+    <div class="inspiracion-imagen" role="button" tabindex="0" aria-label="Ampliar fotografía">
+        <img
+            src="{{ asset('images/home/hero.jpg') }}"
+            alt="Espacio de trabajo contemporáneo"
+            loading="lazy"
+        >
+    </div>
+
+    <div class="inspiracion-imagen" role="button" tabindex="0" aria-label="Ampliar fotografía">
+        <img
+            src="{{ asset('images/home/hero-02.jpg') }}"
+            alt="Oficina moderna con mobiliario de diseño"
+            loading="lazy"
+        >
+    </div>
+
+   <div class="inspiracion-imagen" role="button" tabindex="0" aria-label="Ampliar fotografía">
+        <img
+            src="{{ asset('images/home/hero-03.jpg') }}"
+            alt="Ambiente de oficina cálido y funcional"
+            loading="lazy"
+        >
+    </div>
+</div>
+<!-- Videos de inspiración -->
+<div class="inspiracion-videos">
+    <div class="inspiracion-videos-encabezado">
+        <span class="inspiracion-etiqueta">DISEÑO EN MOVIMIENTO</span>
+        <h3 class="serif">El diseño cobra vida.</h3>
+    </div>
+
+    <div class="inspiracion-videos-grid">
+        <div class="inspiracion-video">
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/e-40aTA2xR8"
+                title="Video de inspiración 1"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="inspiracion-video">
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/jB-VAIRay-w"
+                title="Video de inspiración 2"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+    </div>
+</section>
+<!-- Visor de imágenes de Inspiración -->
+<div
+    id="inspiracion-lightbox"
+    class="inspiracion-lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Fotografía ampliada"
+    aria-hidden="true"
+    hidden
+>
+    <button
+        type="button"
+        class="inspiracion-lightbox-cerrar"
+        aria-label="Cerrar fotografía ampliada"
+    >
+        &times;
+    </button>
+
+    <img
+        class="inspiracion-lightbox-imagen"
+        src=""
+        alt=""
+    >
+</div>
 </main>
 
 
@@ -1731,7 +2013,69 @@ function showNextHeroSlide() {
 if (heroSlides.length > 1) {
     setInterval(showNextHeroSlide, 5000);
 } 
+/* Galería de imágenes: visor ampliado */
+const galeriaImagenes = document.querySelectorAll(
+    '.inspiracion-imagen'
+);
+const lightbox = document.getElementById('inspiracion-lightbox');
+const lightboxImagen = lightbox?.querySelector(
+    '.inspiracion-lightbox-imagen'
+);
+const lightboxCerrar = lightbox?.querySelector(
+    '.inspiracion-lightbox-cerrar'
+);
 
+if (lightbox && lightboxImagen && lightboxCerrar) {
+    let elementoAnterior = null;
+
+    function abrirLightbox(contenedor) {
+        const imagen = contenedor.querySelector('img');
+        if (!imagen) return;
+
+        elementoAnterior = document.activeElement;
+        lightboxImagen.src = imagen.currentSrc || imagen.src;
+        lightboxImagen.alt = imagen.alt;
+        lightbox.hidden = false;
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        lightboxCerrar.focus();
+    }
+
+    function cerrarLightbox() {
+        lightbox.hidden = true;
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImagen.removeAttribute('src');
+        document.body.style.overflow = '';
+        elementoAnterior?.focus();
+    }
+
+    galeriaImagenes.forEach((contenedor) => {
+        contenedor.addEventListener('click', () => {
+            abrirLightbox(contenedor);
+        });
+
+        contenedor.addEventListener('keydown', (evento) => {
+            if (evento.key === 'Enter' || evento.key === ' ') {
+                evento.preventDefault();
+                abrirLightbox(contenedor);
+            }
+        });
+    });
+
+    lightboxCerrar.addEventListener('click', cerrarLightbox);
+
+    lightbox.addEventListener('click', (evento) => {
+        if (evento.target === lightbox) {
+            cerrarLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', (evento) => {
+        if (!lightbox.hidden && evento.key === 'Escape') {
+            cerrarLightbox();
+        }
+    });
+}
 </script>
 
 </body>

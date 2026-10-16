@@ -1166,7 +1166,7 @@ footer {
                     </h2>
                 </div>
 
-                <a href="#" class="text-link">
+                <a href="{{ route('productos.index') }}" class="text-link">
                     Ver todos
                 </a>
 

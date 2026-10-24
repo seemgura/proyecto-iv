@@ -1043,6 +1043,29 @@ footer {
         gap: 20px;
     }
 }
+
+    /* Animación de entrada para tarjetas de productos */
+@keyframes aparecerProducto {
+    from {
+        opacity: 0;
+        transform: translateY(80px) scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.product.animar-entrada {
+animation: aparecerProducto 1.4s ease-out both;}
+
+/* Respetar las preferencias de movimiento del usuario */
+@media (prefers-reduced-motion: reduce) {
+    .product.animar-entrada {
+        animation: none;
+    }
+}
     </style>
 </head>
 
@@ -2074,6 +2097,31 @@ if (lightbox && lightboxImagen && lightboxCerrar) {
         if (!lightbox.hidden && evento.key === 'Escape') {
             cerrarLightbox();
         }
+    });
+
+    }
+
+    /* Animación de entrada de productos */
+const tarjetasAnimadas = document.querySelectorAll('.product');
+
+if ('IntersectionObserver' in window) {
+    const observadorProductos = new IntersectionObserver(
+        (entradas, observador) => {
+            entradas.forEach((entrada) => {
+                if (entrada.isIntersecting) {
+    entrada.target.classList.add('animar-entrada');
+} else {
+    entrada.target.classList.remove('animar-entrada');
+}
+            });
+        },
+        {
+            threshold: 0
+        }
+    );
+
+    tarjetasAnimadas.forEach((tarjeta) => {
+        observadorProductos.observe(tarjeta);
     });
 }
 </script>

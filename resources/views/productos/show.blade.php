@@ -28,10 +28,11 @@
     .product-layout {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        height: 480px;
+        min-height: 480px;
+        height: auto;
         background: #faf8f4;
         border: 1px solid #ddd7ce;
-        overflow: hidden;
+        overflow: visible;
     }
 
     /* IMAGEN */
@@ -60,7 +61,8 @@
 
     /* INFORMACIÓN DEL PRODUCTO */
     .product-content {
-        height: 480px;
+        min-height: 480px;
+        height: auto;
         box-sizing: border-box;
         padding: 24px 40px 20px;
         display: flex;
@@ -352,7 +354,7 @@
                             {{ $producto->descripcion }}
                         </p>
                     @endif
-
+                    @if (auth()->check() && auth()->user()->esAdministrador())
                     <div class="badges">
 
                         @if ($producto->activo)
@@ -366,6 +368,7 @@
                         @endif
 
                     </div>
+                 @endif
 
                     <div class="rating-section">
 
@@ -452,6 +455,19 @@
 
                     </div>
 
+                    @if ($producto->activo && $producto->stock > 0)
+                        <form action="{{ route('carrito.agregar') }}" method="POST" style="margin-top: 12px;">
+                            @csrf
+                            <input type="hidden" name="producto_id" value="{{ $producto->id }}">
+                            <input type="hidden" name="cantidad" value="1">
+                            <button type="submit" style="width: 100%; padding: 12px 15px; background: #171715; color: #fff; border: 0; cursor: pointer; font-size: 10px; letter-spacing: .18em; text-transform: uppercase;">
+                                Agregar
+                            </button>
+                        </form>
+                    @endif
+
+                @if (auth()->check() && auth()->user()->esAdministrador())
+
                     <div class="actions">
 
                         <a
@@ -480,7 +496,9 @@
 
                     </div>
 
-                </div>
+@endif
+
+</div>
 
             </article>
 

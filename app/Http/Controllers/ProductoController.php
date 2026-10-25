@@ -13,11 +13,22 @@ class ProductoController extends Controller
      * Mostrar todos los productos.
      */
     public function index()
-    {
-        $productos = Producto::latest()->paginate(10);
+{
+    $esAdministrador = auth()->user()?->esAdministrador() ?? false;
 
-        return view('productos.index', compact('productos'));
-    }
+    $productos = Producto::query()
+        ->when(
+            !$esAdministrador,
+            fn ($query) => $query->where('activo', true)
+        )
+        ->latest()
+        ->paginate(10);
+
+    return view('productos.index', compact(
+        'productos',
+        'esAdministrador'
+    ));
+}
 
     /**
      * Mostrar formulario para crear un producto.

@@ -1,5 +1,7 @@
+
 <?php
 
+use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
@@ -51,6 +53,27 @@ Route::post('/productos/{producto}/valorar', [ProductoController::class, 'valora
 
 /*
 |--------------------------------------------------------------------------
+| Carrito de compras
+|--------------------------------------------------------------------------
+|
+| El carrito es público y almacena los productos en la sesión.
+|
+*/
+
+Route::get('/carrito', [CarritoController::class, 'index'])
+    ->name('carrito.index');
+
+Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])
+    ->name('carrito.agregar');
+
+Route::patch('/carrito/{productoId}', [CarritoController::class, 'actualizar'])
+    ->name('carrito.actualizar');
+
+Route::delete('/carrito/{productoId}', [CarritoController::class, 'eliminar'])
+    ->name('carrito.eliminar');
+
+/*
+|--------------------------------------------------------------------------
 | Panel administrativo
 |--------------------------------------------------------------------------
 */
@@ -86,7 +109,8 @@ Route::middleware('auth')->group(function () {
     */
 
     Route::resource('productos', ProductoController::class)
-        ->except(['index', 'show']);
+    ->except(['index', 'show'])
+    ->middleware('administrador');
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +118,8 @@ Route::middleware('auth')->group(function () {
     |--------------------------------------------------------------------------
     */
 
-    Route::resource('pedidos', PedidoController::class);
+    Route::resource('pedidos', PedidoController::class)
+    ->middleware('administrador');
 
     /*
     |--------------------------------------------------------------------------
@@ -103,7 +128,8 @@ Route::middleware('auth')->group(function () {
     */
 
     Route::get('/usuarios', [UsuarioController::class, 'index'])
-        ->name('usuarios.index');
+    ->middleware('administrador')
+    ->name('usuarios.index');
 
     /*
     |--------------------------------------------------------------------------

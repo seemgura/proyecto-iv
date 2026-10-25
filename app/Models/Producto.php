@@ -33,4 +33,9 @@ class Producto extends Model
     {
         return $this->hasMany(Valoracion::class);
     }
+
+    public function detallesPedido(): HasMany
+    {
+        return $this->hasMany(DetallePedido::class);
+    }
 }

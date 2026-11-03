@@ -15,9 +15,105 @@
     >
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
+<style>
+    .institutional-navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+        padding: 26px 7%;
+        background: #f5f4ee;
+        border-bottom: 1px solid #dedbd2;
+    }
+
+    .institutional-navbar-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        color: #24231f;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 23px;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        line-height: 1.1;
+        text-decoration: none;
+    }
+
+    .institutional-navbar-brand span {
+        color: #77766f;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 8px;
+        letter-spacing: 0.28em;
+    }
+
+    .institutional-navbar-links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 28px;
+    }
+
+    .institutional-navbar-links a {
+        color: #24231f;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: opacity 0.2s ease;
+    }
+
+    .institutional-navbar-links a:hover {
+        opacity: 0.55;
+    }
+
+    .institutional-navbar-links a[aria-current="page"] {
+        text-decoration: underline;
+        text-underline-offset: 7px;
+    }
+
+    @media (max-width: 760px) {
+        .institutional-navbar {
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 5%;
+        }
+
+        .institutional-navbar-links {
+            justify-content: center;
+            gap: 14px 20px;
+        }
+
+        .institutional-navbar-links a {
+            font-size: 10px;
+        }
+    }
+</style>
+
 </head>
 
+
 <body>
+
+    {{-- NAVEGACIÓN INSTITUCIONAL --}}
+    <header class="institutional-navbar">
+        <a href="{{ url('/') }}" class="institutional-navbar-brand">
+            INTEOFFICE
+            <span>ESPACIOS QUE INSPIRAN</span>
+        </a>
+
+        <nav class="institutional-navbar-links"
+             aria-label="Navegación principal">
+            <a href="{{ url('/') }}">Inicio</a>
+            <a href="{{ route('productos.index') }}">Tienda</a>
+            <a href="{{ route('nosotros') }}" aria-current="page">Nosotros</a>
+            <a href="{{ route('ubicacion') }}">Ubicación</a>
+            <a href="{{ route('contacto') }}">Contacto</a>
+        </nav>
+    </header>
 
     <div class="inteoffice-institutional">
 

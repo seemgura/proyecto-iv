@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\MensajeContactoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,27 @@ Route::get('/nosotros', function () {
 Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
+
+/*
+|--------------------------------------------------------------------------
+| Ubicación y contacto
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/ubicacion', function () {
+    return view('institucional.ubicacion');
+})->name('ubicacion');
+
+
+Route::get('/contacto', function () {
+    return view('institucional.contacto');
+})->name('contacto');
+
+Route::post('/contacto', [
+    \App\Http\Controllers\ContactoController::class,
+    'store'
+])->name('contacto.store');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -77,17 +100,31 @@ Route::delete('/carrito/{productoId}', [CarritoController::class, 'eliminar'])
 |--------------------------------------------------------------------------
 */
 
+
+
 Route::get('/dashboard', function () {
     $totalProductos = \App\Models\Producto::count();
     $totalPedidos = \App\Models\Pedido::count();
     $totalUsuarios = \App\Models\User::count();
 
+    // Mensajes de contacto
+    $totalMensajes = \App\Models\Contacto::count();
+
+    $mensajesPendientes = \App\Models\Contacto::where(
+        'leido',
+        false
+    )->count();
+
     return view('dashboard', compact(
         'totalProductos',
         'totalPedidos',
-        'totalUsuarios'
+        'totalUsuarios',
+        'totalMensajes',
+        'mensajesPendientes'
     ));
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'administrador'])
+  ->name('dashboard');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -129,6 +166,30 @@ Route::middleware('auth')->group(function () {
     Route::get('/usuarios', [UsuarioController::class, 'index'])
     ->middleware('administrador')
     ->name('usuarios.index');
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mensajes de contacto
+    |--------------------------------------------------------------------------
+    */
+
+    Route::middleware('administrador')
+        ->prefix('admin/contactos')
+        ->name('admin.contactos.')
+        ->group(function () {
+
+            Route::get('/', [MensajeContactoController::class, 'index'])
+                ->name('index');
+
+            Route::get('/{contacto}', [MensajeContactoController::class, 'show'])
+                ->name('show');
+
+            Route::patch('/{contacto}/no-leido', [
+                MensajeContactoController::class,
+                'marcarNoLeido'
+            ])->name('no-leido');
+        });
 
     /*
     |--------------------------------------------------------------------------

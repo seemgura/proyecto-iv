@@ -19,40 +19,32 @@
             --line: #d8d0c3;
             --muted: #817b72;
         }
-
         * {
             box-sizing: border-box;
         }
-
         html {
             scroll-behavior: smooth;
         }
-
         body {
             margin: 0;
             background: var(--paper);
             color: var(--ink);
             font-family: Arial, Helvetica, sans-serif;
         }
-
         a {
             color: inherit;
             text-decoration: none;
         }
-
         .serif {
             font-family: Georgia, "Times New Roman", serif;
         }
-
         .container {
             width: min(1400px, calc(100% - 80px));
             margin: 0 auto;
         }
-
         /* =========================================================
            HEADER
            ========================================================= */
-
         .site-header {
             position: sticky;
             top: 0;
@@ -61,7 +53,6 @@
             border-bottom: 1px solid var(--line);
             backdrop-filter: blur(12px);
         }
-
         .nav {
             height: 88px;
             display: grid;
@@ -69,40 +60,33 @@
             align-items: center;
             gap: 30px;
         }
-
         .nav-left,
         .nav-right {
             display: flex;
             align-items: center;
             gap: 28px;
         }
-
         .nav-right {
             justify-content: flex-end;
         }
-
         .nav-link {
             font-size: 11px;
             letter-spacing: .18em;
             text-transform: uppercase;
             transition: opacity .25s ease;
         }
-
         .nav-link:hover {
             opacity: .55;
         }
-
         .brand {
             text-align: center;
         }
-
         .brand-name {
             font-family: Georgia, "Times New Roman", serif;
             font-size: 25px;
             letter-spacing: .32em;
             line-height: 1;
         }
-
         .brand-tagline {
             margin-top: 8px;
             font-size: 8px;
@@ -110,27 +94,22 @@
             color: var(--muted);
             text-transform: uppercase;
         }
-
         .icon-link {
             font-size: 17px;
             transition: opacity .25s ease;
         }
-
         .icon-link:hover {
             opacity: .55;
         }
-
         /* =========================================================
            HERO
            ========================================================= */
-
         .hero {
             min-height: 650px;
             display: grid;
             grid-template-columns: 46% 54%;
             border-bottom: 1px solid var(--line);
         }
-
         .hero-content {
             display: flex;
             flex-direction: column;
@@ -138,14 +117,12 @@
             padding: 90px max(60px, calc((100vw - 1400px) / 2));
             padding-right: 70px;
         }
-
         .eyebrow {
             font-size: 10px;
             letter-spacing: .4em;
             text-transform: uppercase;
             color: var(--muted);
         }
-
         .hero-title {
             margin: 28px 0 30px;
             max-width: 650px;
@@ -154,25 +131,21 @@
             line-height: .88;
             letter-spacing: -.055em;
         }
-
         .hero-title em {
             font-weight: 400;
         }
-
         .hero-description {
             max-width: 480px;
             color: #6f6a62;
             font-size: 15px;
             line-height: 1.8;
         }
-
         .hero-actions {
             margin-top: 48px;
             display: flex;
             align-items: center;
             gap: 32px;
         }
-
         .button-dark {
             display: inline-flex;
             justify-content: center;
@@ -187,11 +160,9 @@
             text-transform: uppercase;
             transition: .25s ease;
         }
-
         .button-dark:hover {
             background: #383630;
         }
-
         .text-link {
             padding-bottom: 7px;
             border-bottom: 1px solid var(--ink);
@@ -200,20 +171,16 @@
             text-transform: uppercase;
             transition: opacity .25s ease;
         }
-
         .text-link:hover {
             opacity: .55;
         }
-
         /* IMAGEN PRINCIPAL */
-
         .hero-visual {
             position: relative;
             min-height: 650px;
             overflow: hidden;
             background: #c8b9a6;
         }
-
         .hero-image {
             position: absolute;
             inset: 0;
@@ -223,16 +190,13 @@
             object-position: 55% center;
             display: block;
         }
-
         .hero-slide {
     opacity: 0;
     transition: opacity 1.2s ease-in-out;
 }
-
 .hero-slide.active {
     opacity: 1;
 }
-
         /*
          * Capa tonal muy discreta.
          * Ayuda a integrar la fotografía con la paleta
@@ -251,7 +215,6 @@
             );
             pointer-events: none;
         }
-
         .hero-counter {
     position: absolute;
     z-index: 2;
@@ -261,7 +224,6 @@
     font-size: 10px;
     letter-spacing: .35em;
 }
-
         .visual-copy {
             position: absolute;
             z-index: 2;
@@ -269,14 +231,12 @@
             bottom: 42px;
             color: white;
         }
-
         .visual-copy span {
             display: block;
             font-size: 9px;
             letter-spacing: .4em;
             text-transform: uppercase;
         }
-
         .visual-copy strong {
             display: block;
             margin-top: 10px;
@@ -284,22 +244,18 @@
             font-size: 29px;
             font-weight: 400;
         }
-
         /* =========================================================
            INTRO
            ========================================================= */
-
         .intro {
             padding: 130px 0;
             border-bottom: 1px solid var(--line);
         }
-
         .intro-grid {
             display: grid;
             grid-template-columns: 1fr 2.2fr;
             gap: 90px;
         }
-
         .intro-title {
             max-width: 900px;
             margin: 0;
@@ -308,77 +264,213 @@
             font-weight: 400;
             letter-spacing: -.04em;
         }
-
         /* =========================================================
            SECCIONES
            ========================================================= */
-
         .section {
             padding: 110px 0;
             border-bottom: 1px solid var(--line);
         }
-
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             margin-bottom: 55px;
         }
-
         .section-number {
             font-size: 9px;
             letter-spacing: .3em;
             color: var(--muted);
         }
-
         .section-title {
             margin: 12px 0 0;
             font-size: 44px;
             font-weight: 400;
         }
-
         /* =========================================================
-           CATEGORÍAS
-           ========================================================= */
+   COLECCIONES EDITORIALES
+   ========================================================= */
+.collections-section {
+    padding-top: 65px;
+    padding-bottom: 70px;
+}
+.collections-section .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 35px;
+}
 
-        .categories {
-            border-top: 1px solid var(--line);
-        }
+.collections-intro {
+    max-width: 390px;
+    margin: 0;
+    padding: 5px 0 5px 24px;
+    border-left: 2px solid #9b8066;
 
-        .category {
-            display: grid;
-            grid-template-columns: 80px 1fr auto;
-            align-items: center;
-            padding: 30px 0;
-            border-bottom: 1px solid var(--line);
-            transition:
-                padding .25s ease,
-                background .25s ease;
-        }
+    color: #514b45;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(18px, 1.6vw, 24px);
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+}
 
-        .category:hover {
-            padding-left: 15px;
-        }
+.collections-intro em {
+    color: #96765a;
+    font-style: italic;
+}
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+.collection-card {
+    position: relative;
+    display: block;
+    min-width: 0;
+    height: 270px;
+    overflow: hidden;
+    background: #ded9cf;
+    color: #fff;
+    text-decoration: none;
+    isolation: isolate;
+}
+.collection-featured {
+    grid-column: span 2;
+}
+.collection-image {
+    position: absolute;
+    inset: 0;
+}
+.collection-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .65s ease;
+}
+.collection-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, .65), rgba(0, 0, 0, .04) 70%);
+    z-index: 0;
+}
+.collection-info {
+    position: absolute;
+    inset: auto 0 0;
+    z-index: 1;
+    padding: 24px;
+}
+.collection-index {
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+.collection-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+}
+.collection-bottom h3 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(24px, 2.6vw, 37px);
+    font-weight: 400;
+}
+.collection-arrow {
+    display: grid;
+    place-items: center;
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, .65);
+    border-radius: 50%;
+    font-size: 17px;
+    transition: background .25s ease, color .25s ease;
+}
+.collection-card:hover .collection-image img {
+    transform: scale(1.055);
+}
+.collection-card:hover .collection-arrow {
+    background: #fff;
+    color: #171717;
+}
+.collection-card:focus-visible {
+    outline: 3px solid #171717;
+    outline-offset: 3px;
+}
+.collections-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+}
+.collections-footer > span {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: .2em;
+}
+.collections-footer a {
+    color: inherit;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 5px;
+}
+@media (max-width: 900px) {
+    .collections-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .collection-featured {
+        grid-column: span 2;
+    }
+}
+@media (max-width: 600px) {
+    .collections-section {
+        padding-top: 45px;
+        padding-bottom: 50px;
+    }
+    .collections-section .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .collections-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .collection-featured {
+        grid-column: auto;
+    }
+    .collection-card {
+        height: 245px;
+    }
+    .collections-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .collection-image img,
+    .collection-arrow {
+        transition: none;
+    }
+    .collection-card:hover .collection-image img {
+        transform: none;
+    }
+}
 
-        .category-number {
-            color: var(--muted);
-            font-size: 9px;
-            letter-spacing: .2em;
-        }
-
-        .category-name {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(30px, 3vw, 52px);
-        }
-
-        .category-arrow {
-            font-size: 22px;
-        }
-
-        /* =========================================================
+/* =========================================================
    PRODUCTOS
    ========================================================= */
-
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -386,11 +478,9 @@
     background: var(--line);
     border: 1px solid var(--line);
 }
-
 .product {
     background: var(--paper);
 }
-
 .product-image {
     display: block;
     height: 430px;
@@ -398,7 +488,6 @@
     overflow: hidden;
     background: #ddd5c9;
 }
-
 .product-image img {
     width: 100%;
     height: 100%;
@@ -407,11 +496,9 @@
     object-position: center;
     transition: transform .6s ease;
 }
-
 .product:hover .product-image img {
     transform: scale(1.025);
 }
-
 .product-placeholder {
     width: 100%;
     height: 100%;
@@ -428,21 +515,18 @@
     letter-spacing: .3em;
     text-transform: uppercase;
 }
-
 .product-info {
     padding: 28px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
-
 .product-category {
     font-size: 8px;
     letter-spacing: .3em;
     color: var(--muted);
     text-transform: uppercase;
 }
-
 .product-name {
     display: block;
     margin-top: 10px;
@@ -451,41 +535,34 @@
     color: var(--ink);
     text-decoration: none;
 }
-
 .product-price {
     font-size: 12px;
     white-space: nowrap;
 }
-
 .products-empty {
     grid-column: 1 / -1;
     padding: 90px 40px;
     background: var(--paper);
     text-align: center;
 }
-
 .products-empty p {
     margin: 18px 0 0;
     color: var(--muted);
 }
-
 /* =========================================================
    MANIFIESTO
    ========================================================= */
-
 .manifesto {
     padding: 160px 0;
     background: var(--ink);
     color: #f5f0e7;
 }
-
 .manifesto-grid {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
     gap: 80px;
     align-items: start;
 }
-
 .manifesto-title {
     margin: 0;
     max-width: 900px;
@@ -494,29 +571,23 @@
     font-weight: 400;
     letter-spacing: -.045em;
 }
-
 .manifesto-title em {
     color: #bdb4a8;
     font-weight: 400;
 }
-
-
 /* =========================================================
    FOOTER
    ========================================================= */
-
 footer {
     padding: 80px 0 45px;
     background: var(--paper-light);
 }
-
 .footer-grid {
     display: grid;
     grid-template-columns: 2fr repeat(3, 1fr);
     gap: 70px;
     padding-bottom: 80px;
 }
-
 .footer-heading {
     margin-bottom: 22px;
     font-size: 9px;
@@ -524,24 +595,20 @@ footer {
     color: var(--muted);
     text-transform: uppercase;
 }
-
 .footer-links {
     display: flex;
     flex-direction: column;
     gap: 13px;
     font-size: 13px;
 }
-
 .footer-links a {
     color: inherit;
     text-decoration: none;
     transition: opacity .25s ease;
 }
-
 .footer-links a:hover {
     opacity: .55;
 }
-
 .footer-bottom {
     padding-top: 25px;
     border-top: 1px solid var(--line);
@@ -552,152 +619,115 @@ footer {
     letter-spacing: .25em;
     text-transform: uppercase;
 }
-
 .footer-social {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 18px;
 }
-
 .footer-social span {
     color: var(--muted);
 }
-
 .footer-social a {
     color: inherit;
     text-decoration: none;
     transition: opacity .2s ease;
 }
-
 .footer-social a:hover {
     opacity: .5;
 }
-
         /* =========================================================
            RESPONSIVE
            ========================================================= */
-
         @media (max-width: 900px) {
-
             .container {
                 width: min(100% - 36px, 1400px);
             }
-
             .nav {
                 grid-template-columns: 1fr auto;
             }
-
             .nav-left {
                 display: none;
             }
-
             .brand {
                 text-align: left;
             }
-
             .nav-right .nav-link {
                 display: none;
             }
-
             .hero {
                 grid-template-columns: 1fr;
             }
-
             .hero-content {
                 padding: 80px 28px;
             }
-
             .hero-visual {
                 min-height: 500px;
             }
-
             .intro-grid,
             .manifesto-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-
             .products {
                 grid-template-columns: 1fr;
             }
-
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
-
         @media (max-width: 600px) {
-
             .nav {
                 height: 76px;
             }
-
             .brand-name {
                 font-size: 18px;
             }
-
             .brand-tagline {
                 font-size: 6px;
             }
-
             .nav-right {
                 gap: 15px;
             }
-
             .hero-title {
                 font-size: clamp(58px, 18vw, 82px);
             }
-
             .hero-actions {
                 align-items: flex-start;
                 flex-direction: column;
             }
-
             .hero-visual {
                 min-height: 480px;
             }
-
             .visual-copy {
                 left: 24px;
                 bottom: 28px;
             }
-
             .hero-visual::after {
                 right: 24px;
                 bottom: 28px;
             }
-
             .intro,
             .section {
                 padding: 80px 0;
             }
-
             .section-header {
                 align-items: flex-start;
                 flex-direction: column;
                 gap: 25px;
             }
 
-            .category {
-                grid-template-columns: 50px 1fr auto;
-            }
-
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-
             .footer-bottom {
                 flex-direction: column;
                 gap: 15px;
             }
-
             }
-
 /* =========================================================
    CHAT INTEOFFICE
    ========================================================= */
-
 .chat-launcher {
     position: fixed;
     right: 28px;
@@ -716,17 +746,14 @@ footer {
     box-shadow: 0 12px 35px rgba(23, 23, 21, .18);
     transition: transform .25s ease, background .25s ease;
 }
-
 .chat-launcher:hover {
     transform: translateY(-3px);
     background: #383630;
 }
-
 .chat-launcher svg {
     width: 22px;
     height: 22px;
 }
-
 .chat-panel {
     position: fixed;
     right: 28px;
@@ -743,13 +770,11 @@ footer {
                 transform .25s ease,
                 visibility .25s ease;
 }
-
 .chat-panel.is-open {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
-
 .chat-header {
     padding: 24px;
     background: var(--ink);
@@ -758,7 +783,6 @@ footer {
     justify-content: space-between;
     align-items: flex-start;
 }
-
 .chat-header-copy span {
     display: block;
     margin-bottom: 7px;
@@ -767,13 +791,11 @@ footer {
     text-transform: uppercase;
     color: #bdb4a8;
 }
-
 .chat-header-copy strong {
     font-family: Georgia, "Times New Roman", serif;
     font-size: 24px;
     font-weight: 400;
 }
-
 .chat-close {
     border: 0;
     background: transparent;
@@ -782,7 +804,6 @@ footer {
     line-height: 1;
     cursor: pointer;
 }
-
 .chat-messages {
     height: 300px;
     padding: 24px;
@@ -791,25 +812,21 @@ footer {
     flex-direction: column;
     gap: 14px;
 }
-
 .chat-message {
     max-width: 85%;
     padding: 13px 15px;
     font-size: 13px;
     line-height: 1.55;
 }
-
 .chat-message.bot {
     align-self: flex-start;
     background: #e9e3d9;
 }
-
 .chat-message.user {
     align-self: flex-end;
     background: var(--ink);
     color: #fff;
 }
-
 .chat-form {
     padding: 18px;
     border-top: 1px solid var(--line);
@@ -817,7 +834,6 @@ footer {
     grid-template-columns: 1fr auto;
     gap: 10px;
 }
-
 .chat-input {
     min-width: 0;
     padding: 13px 14px;
@@ -828,11 +844,9 @@ footer {
     font: inherit;
     font-size: 13px;
 }
-
 .chat-input:focus {
     border-color: var(--ink);
 }
-
 .chat-send {
     border: 0;
     padding: 0 18px;
@@ -843,20 +857,17 @@ footer {
     letter-spacing: .18em;
     text-transform: uppercase;
 }
-
 @media (max-width: 600px) {
     .chat-launcher {
         right: 18px;
         bottom: 18px;
     }
-
     .chat-panel {
         right: 18px;
         bottom: 88px;
         width: calc(100vw - 36px);
     }
 }
-        }
 /* ==========================================
    INSPIRACIÓN: GALERÍA DE IMÁGENES Y VIDEOS
    ========================================== */ 
@@ -865,11 +876,9 @@ footer {
     padding: 100px 0;
     background-color: #f4f0ea;
 }
-
 .inspiracion-encabezado {
     margin-bottom: 48px;
 }
-
 .inspiracion-etiqueta {
     display: block;
     margin-bottom: 20px;
@@ -879,7 +888,6 @@ footer {
     text-transform: uppercase;
     color: #8a8178;
 }
-
 .inspiracion-titulo {
     margin: 0 0 20px;
     font-size: clamp(36px, 5vw, 64px);
@@ -887,7 +895,6 @@ footer {
     line-height: 1.1;
     color: #191919;
 }
-
 .inspiracion-descripcion {
     max-width: 560px;
     font-size: 16px;
@@ -901,14 +908,12 @@ footer {
     gap: 20px;
     margin-bottom: 64px;
 }
-
 .inspiracion-imagen {
     position: relative;
     overflow: hidden;
     aspect-ratio: 4 / 5;
     background-color: #e5dfd6;
 }
-
 .inspiracion-imagen img {
     display: block;
     width: 100%;
@@ -916,23 +921,19 @@ footer {
     object-fit: cover;
     transition: transform 0.6s ease;
 }
-
 .inspiracion-imagen:hover img {
     transform: scale(1.05);
 }
-
 /* Adaptación a tabletas y teléfonos */
 @media (max-width: 768px) {
     .inspiracion {
         padding: 64px 0;
     }
-
     .inspiracion-galeria {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
     }
 }
-
 @media (max-width: 480px) {
     .inspiracion-galeria {
         grid-template-columns: 1fr;
@@ -949,11 +950,9 @@ footer {
     padding: 60px 24px;
     background: rgba(0, 0, 0, 0.92);
 }
-
 .inspiracion-lightbox[hidden] {
     display: none;
 }
-
 .inspiracion-lightbox-imagen {
     display: block;
     max-width: 100%;
@@ -962,7 +961,6 @@ footer {
     height: auto;
     object-fit: contain;
 }
-
 .inspiracion-lightbox-cerrar {
     position: absolute;
     top: 20px;
@@ -976,21 +974,17 @@ footer {
     line-height: 1;
     cursor: pointer;
 }
-
 .inspiracion-lightbox-cerrar:hover {
     opacity: 0.7;
 }
-
 .inspiracion-lightbox-cerrar:focus-visible {
     outline: 2px solid #ffffff;
     outline-offset: 4px;
 }
-
 @media (max-width: 480px) {
     .inspiracion-lightbox:not([hidden]) {
         padding: 60px 16px;
     }
-
     .inspiracion-lightbox-cerrar {
         top: 12px;
         right: 12px;
@@ -1000,24 +994,20 @@ footer {
 .inspiracion-videos {
     margin-top: 90px;
 }
-
 .inspiracion-videos-encabezado {
     margin-bottom: 32px;
 }
-
 .inspiracion-videos-encabezado h3 {
     margin: 14px 0 0;
     font-size: clamp(30px, 4vw, 48px);
     font-weight: 400;
     line-height: 1.15;
 }
-
 .inspiracion-videos-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
 }
-
 .inspiracion-video {
     position: relative;
     width: 100%;
@@ -1025,41 +1015,35 @@ footer {
     overflow: hidden;
     background: #1a1a1a;
 }
-
 .inspiracion-video iframe {
     display: block;
     width: 100%;
     height: 100%;
     border: 0;
 }
-
 @media (max-width: 768px) {
     .inspiracion-videos {
         margin-top: 60px;
     }
-
     .inspiracion-videos-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
 }
-
     /* Animación de entrada para tarjetas de productos */
 @keyframes aparecerProducto {
     from {
         opacity: 0;
         transform: translateY(80px) scale(0.94);
     }
-
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 }
-
 .product.animar-entrada {
-animation: aparecerProducto 1.4s ease-out both;}
-
+animation: aparecerProducto 1.4s ease-out both;
+}
 /* Respetar las preferencias de movimiento del usuario */
 @media (prefers-reduced-motion: reduce) {
     .product.animar-entrada {
@@ -1067,25 +1051,27 @@ animation: aparecerProducto 1.4s ease-out both;}
     }
 }
     </style>
+
 </head>
 
 <body>
 
+
 <header class="site-header">
     <div class="container nav">
 
-        <nav class="nav-left">
+        <nav class="nav-left" aria-label="Navegación principal">
             <a class="nav-link" href="#colecciones">
                 Colecciones
             </a>
 
-            <a class="nav-link" href="#productos">
-                Productos
+            <a class="nav-link" href="{{ route('productos.index') }}">
+                Tienda
             </a>
 
             <a class="nav-link" href="{{ route('nosotros') }}">
-    Nosotros
-</a>
+                Nosotros
+            </a>
         </nav>
 
         <a href="{{ url('/') }}" class="brand">
@@ -1105,37 +1091,51 @@ animation: aparecerProducto 1.4s ease-out both;}
                     class="nav-link"
                     href="{{ route('dashboard') }}"
                 >
-                    Panel
+                    Mi cuenta
                 </a>
             @else
                 <a
                     class="nav-link"
                     href="{{ route('login') }}"
                 >
-                    Cuenta
+                    Iniciar sesión
                 </a>
             @endauth
 
             <a
                 class="icon-link"
-                href="#"
-                aria-label="Buscar"
+                href="{{ route('carrito.index') }}"
+                aria-label="Ver carrito de compras"
+                title="Ver carrito"
             >
-                ⌕
-            </a>
-
-            <a
-                class="icon-link"
-                href="#"
-                aria-label="Carrito"
-            >
-                Bag
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <rect
+                        x="4"
+                        y="7"
+                        width="16"
+                        height="14"
+                        rx="2"
+                    />
+                    <path d="M9 9V6a3 3 0 0 1 6 0v3" />
+                </svg>
             </a>
 
         </div>
 
     </div>
 </header>
+
 
 
 <main>
@@ -1246,111 +1246,142 @@ animation: aparecerProducto 1.4s ease-out both;}
          COLECCIONES
          ========================================================= -->
 
-    <section
-        class="section"
-        id="colecciones"
-    >
-        <div class="container">
+    
 
-            <div class="section-header">
+<section class="section collections-section" id="colecciones">
+    <div class="container">
 
-                <div>
-                    <span class="section-number">
-                        01
-                    </span>
+        <div class="section-header">
+            <div>
+                <span class="section-number">01 / EXPLORAR</span>
 
-                    <h2 class="section-title serif">
-                        Colecciones
-                    </h2>
-                </div>
-
-                <span class="eyebrow">
-                    Explora por categoría
-                </span>
-
+                <h2 class="section-title serif">
+                    Colecciones
+                </h2>
             </div>
 
-
-            <div class="categories">
-
-                <a href="#" class="category">
-                    <span class="category-number">
-                        01
-                    </span>
-
-                    <span class="category-name">
-                        Escritorios
-                    </span>
-
-                    <span class="category-arrow">
-                        →
-                    </span>
-                </a>
-
-
-                <a href="#" class="category">
-                    <span class="category-number">
-                        02
-                    </span>
-
-                    <span class="category-name">
-                        Sillas
-                    </span>
-
-                    <span class="category-arrow">
-                        →
-                    </span>
-                </a>
-
-
-                <a href="#" class="category">
-                    <span class="category-number">
-                        03
-                    </span>
-
-                    <span class="category-name">
-                        Almacenamiento
-                    </span>
-
-                    <span class="category-arrow">
-                        →
-                    </span>
-                </a>
-
-
-                <a href="#" class="category">
-                    <span class="category-number">
-                        04
-                    </span>
-
-                    <span class="category-name">
-                        Iluminación
-                    </span>
-
-                    <span class="category-arrow">
-                        →
-                    </span>
-                </a>
-
-
-                <a href="#" class="category">
-                    <span class="category-number">
-                        05
-                    </span>
-
-                    <span class="category-name">
-                        Accesorios
-                    </span>
-
-                    <span class="category-arrow">
-                        →
-                    </span>
-                </a>
-
-            </div>
+            
+<p class="collections-intro">
+    Piezas seleccionadas para
+    <em>transformar</em> cada espacio
+    de trabajo.
+</p>
 
         </div>
-    </section>
+
+        <div class="collections-grid">
+
+            <!-- 01. ESCRITORIOS -->
+            <a href="{{ route('productos.index') }}?categoria=escritorios"
+               class="collection-card collection-featured">
+                <div class="collection-image">
+                    <img
+                        src="{{ asset('images/productos/escritorio-nordico-02.png') }}"
+                        alt="Escritorio Nórdico 02 de diseño contemporáneo"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="collection-info">
+
+                    <div class="collection-bottom">
+                        <h3>Escritorios</h3>
+                        <span class="collection-arrow" aria-hidden="true">↗</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 02. SILLAS -->
+            <a href="{{ route('productos.index') }}?categoria=sillas"
+               class="collection-card">
+                <div class="collection-image">
+                    <img
+                        src="{{ asset('images/productos/silla-ejecutiva-01.png') }}"
+                        alt="Silla Ejecutiva 01 para espacios de trabajo"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="collection-info">
+                    <div class="collection-bottom">
+                        <h3>Sillas</h3>
+                        <span class="collection-arrow" aria-hidden="true">↗</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 03. ALMACENAMIENTO -->
+            <a href="{{ route('productos.index') }}?categoria=almacenamiento"
+               class="collection-card">
+                <div class="collection-image">
+                    <img
+                        src="{{ asset('images/productos/credenza-nogal-01.png') }}"
+                        alt="Credenza Nogal 01 para almacenamiento de oficina"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="collection-info">
+                    <div class="collection-bottom">
+                        <h3>Almacenamiento</h3>
+                        <span class="collection-arrow" aria-hidden="true">↗</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 04. ILUMINACIÓN -->
+            <a href="{{ route('productos.index') }}?categoria=iluminacion"
+               class="collection-card">
+                <div class="collection-image">
+                    <img
+                        src="{{ asset('images/productos/lampara-lineal-01.png') }}"
+                        alt="Lámpara Lineal 01 de diseño minimalista"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="collection-info">
+                    <div class="collection-bottom">
+                        <h3>Iluminación</h3>
+                        <span class="collection-arrow" aria-hidden="true">↗</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 05. ACCESORIOS -->
+            <a href="{{ route('productos.index') }}?categoria=accesorios"
+               class="collection-card">
+                <div class="collection-image">
+                    <img
+                        src="{{ asset('images/productos/organizador-nogal-01.png') }}"
+                        alt="Organizador Nogal 01 para escritorio"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="collection-info">
+                    <div class="collection-bottom">
+                        <h3>Accesorios</h3>
+                        <span class="collection-arrow" aria-hidden="true">↗</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="collections-footer">
+            <span>DISEÑO · FUNCIÓN · ESPACIOS</span>
+
+            <a href="{{ route('productos.index') }}">
+                Explorar toda la tienda
+                <span aria-hidden="true">↗</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
 
 
     <!-- =========================================================
@@ -1635,9 +1666,10 @@ animation: aparecerProducto 1.4s ease-out both;}
     Preguntas frecuentes
 </a>
 
-                    <a href="#">
-                        Contacto
-                    </a>
+
+<a href="{{ route('contacto') }}">
+    Contacto
+</a>
 
                 </div>
 

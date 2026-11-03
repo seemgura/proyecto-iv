@@ -9,26 +9,51 @@ use Illuminate\Support\Str;
 
 class ProductoController extends Controller
 {
-    /**
-     * Mostrar todos los productos.
-     */
-    public function index()
+    
+/**
+ * Mostrar el catálogo de productos.
+ * Permite filtrar por categoría.
+ */
+public function index(Request $request)
 {
     $esAdministrador = auth()->user()?->esAdministrador() ?? false;
+
+    $categorias = [
+        'escritorios',
+        'sillas',
+        'almacenamiento',
+        'iluminacion',
+        'accesorios',
+    ];
+
+    $categoria = $request->query('categoria');
+
+    $categoria = is_string($categoria)
+        && in_array($categoria, $categorias, true)
+            ? $categoria
+            : null;
 
     $productos = Producto::query()
         ->when(
             !$esAdministrador,
             fn ($query) => $query->where('activo', true)
         )
+        ->when(
+            $categoria,
+            fn ($query) => $query->where('categoria', $categoria)
+        )
         ->latest()
-        ->paginate(10);
+        ->paginate(10)
+        ->withQueryString();
 
     return view('productos.index', compact(
         'productos',
-        'esAdministrador'
+        'esAdministrador',
+        'categoria',
+        'categorias'
     ));
 }
+
 
     /**
      * Mostrar formulario para crear un producto.

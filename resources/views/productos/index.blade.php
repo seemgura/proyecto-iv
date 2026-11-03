@@ -60,8 +60,9 @@
                                         <span class="product-badge">★ Destacado</span>
                                     @endif
                                 </div>
-                            @endif
 
+                            @endif
+                        </div>
 
                         <div class="product-side">
                             <div>
@@ -117,7 +118,7 @@
                     <a href="{{ route('productos.create') }}" class="button-new">Crear primer producto</a>
                 @endif
             </div>
-        @endif
 
-            </div>
+        @endif
+    </div>
 </x-app-layout>

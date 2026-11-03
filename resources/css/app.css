@@ -424,6 +424,7 @@
     white-space: normal;
     overflow-wrap: break-word;
     word-break: normal;
+    
 }
 
 .dashboard-hero h1 {
@@ -930,13 +931,38 @@
     gap: 36px;
 }
 
+
+
 .product-row {
     display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "photo info"
+        "photo details";
     border: 1px solid #d8d0c3;
     background: #faf8f3;
     overflow: hidden;
 }
+
+.product-photo {
+    grid-area: photo;
+}
+
+.product-main {
+    grid-area: info;
+    padding-bottom: 12px;
+}
+
+.product-side {
+    grid-area: details;
+    min-width: 0;
+    margin: 0 42px 38px;
+    padding-top: 22px;
+    border-top: 1px solid #d8d0c3;
+    align-self: end;
+}
+
 
 .product-photo {
     min-width: 0;
@@ -1115,11 +1141,22 @@
 @media (max-width: 900px) {
     .catalog-page {
         padding: 45px 5% 75px;
+        
     }
 
-    .product-row {
-        grid-template-columns: 1fr;
-    }
+    
+.product-row {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "photo"
+        "info"
+        "details";
+}
+
+.product-side {
+    margin: 0 32px 32px;
+}
+
 
     .product-photo,
     .product-photo img,
@@ -1132,11 +1169,16 @@
     }
 }
 
+
 @media (max-width: 600px) {
     .catalog-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
+    }
+
+    .product-side {
+        margin: 0 22px 25px;
     }
 
     .catalog-header-right {
@@ -1186,3 +1228,37 @@
         transform: none;
     }
 }
+
+
+/* ==========================================
+   INTEOFFICE — AJUSTE FINAL DEL CATÁLOGO
+   ========================================== */
+
+@media (min-width: 901px) {
+    .product-row {
+        display: grid;
+        grid-template-columns: 46% 54%;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "photo info"
+            "photo details";
+    }
+
+    .product-row > .product-photo {
+        grid-area: photo;
+        height: 100%;
+    }
+
+    .product-row > .product-main {
+        grid-area: info;
+        padding: 38px 42px 12px;
+    }
+
+    .product-row > .product-side {
+        grid-area: details;
+        margin: 0 42px 38px;
+        padding-top: 22px;
+        align-self: end;
+    }
+}
+

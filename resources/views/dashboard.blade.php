@@ -77,6 +77,32 @@
     <span class="card-arrow">→</span>
 </a>
 
+
+{{-- Mensajes de contacto --}}
+<a href="{{ route('admin.contactos.index') }}" class="dashboard-card">
+
+    <div>
+        <p class="card-category">ATENCIÓN AL CLIENTE</p>
+
+        <h3>Mensajes</h3>
+
+        <p>
+            Consulta las solicitudes recibidas
+            desde el formulario de contacto.
+        </p>
+
+        @if ($mensajesPendientes > 0)
+            <p>
+                <strong>{{ $mensajesPendientes }}</strong>
+                {{ $mensajesPendientes === 1 ? 'mensaje pendiente' : 'mensajes pendientes' }}
+            </p>
+        @endif
+    </div>
+
+    <span class="card-arrow">→</span>
+</a>
+
+
             </div>
         </section>
 
@@ -107,6 +133,15 @@
                     <strong>{{ $totalUsuarios }}</strong>
                     <p>Registrados</p>
                 </div>
+
+
+<div class="status-item">
+    <span>MENSAJES</span>
+    <strong>{{ $totalMensajes }}</strong>
+    <p>
+        {{ $mensajesPendientes }} pendientes de lectura
+    </p>
+</div>
 
             </div>
 

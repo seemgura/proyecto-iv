@@ -188,11 +188,15 @@ class ProductoSeeder extends Seeder
 
             $producto = Producto::firstOrNew(['slug' => $slug]);
 
-            // Los productos existentes conservan sus datos.
-            if ($producto->exists) {
-                continue;
-            }
+// Los productos existentes conservan sus datos, excepto la ruta de imagen.
+if ($producto->exists) {
+    if ($producto->imagen !== $datos['imagen']) {
+        $producto->imagen = $datos['imagen'];
+        $producto->save();
+    }
 
+    continue;
+}
             $producto->fill([
                 ...$datos,
                 'slug' => $slug,

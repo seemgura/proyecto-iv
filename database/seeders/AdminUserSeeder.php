@@ -5,47 +5,57 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use RuntimeException;
 
 class AdminUserSeeder extends Seeder
 {
     public function run(): void
     {
         $usuarios = [
-            [
-                'name' => 'Administrador Proyecto IV',
-                'email' => 'admin@proyectoiv.test',
-                'password' => 'password',
-            ],
-            [
-                'name' => 'Sergio Ulises Lillingston Peréz',
-                'email' => 'asesor@inteoffice.test',
-                'password' => 'password',
-            ],
-            [
-                'name' => 'Eduardo Serrano Barajas',
-                'email' => 'eduardo@inteoffice.test',
-                'password' => 'password',
-            ],
-            [
-                'name' => 'Edson Missael López Carbajal',
-                'email' => 'edson@inteoffice.test',
-                'password' => 'password',
-            ],
-            [
-                'name' => 'Sergio Emmanuel Guerra Ramírez',
-                'email' => 'emmanuel@inteoffice.test',
-                'password' => 'password',
-            ],
+            'admin@proyectoiv.test' => 'Administrador Proyecto IV',
+            'asesor@inteoffice.test' => 'Sergio Ulises Lillingston Pérez',
+            'eduardo@inteoffice.test' => 'Eduardo Serrano Barajas',
+            'edson@inteoffice.test' => 'Edson Missael López Carbajal',
+            'emmanuel@inteoffice.test' => 'Sergio Emmanuel Guerra Ramírez',
         ];
 
-        foreach ($usuarios as $usuario) {
-            User::updateOrCreate(
-                ['email' => $usuario['email']],
-                [
-                    'name' => $usuario['name'],
-                    'password' => Hash::make($usuario['password']),
-                ]
-            );
+        foreach ($usuarios as $correo => $nombre) {
+            $usuario = User::where('email', $correo)->first();
+
+            if ($usuario) {
+                // Conservar la contraseña existente.
+                $usuario->rol = 'administrador';
+                $usuario->save();
+
+                continue;
+            }
+
+            // Una contraseña inicial diferente para cada cuenta.
+            $variable = match ($correo) {
+                'admin@proyectoiv.test' => 'ADMIN_INITIAL_PASSWORD',
+                'asesor@inteoffice.test' => 'ASESOR_INITIAL_PASSWORD',
+                'eduardo@inteoffice.test' => 'EDUARDO_INITIAL_PASSWORD',
+                'edson@inteoffice.test' => 'EDSON_INITIAL_PASSWORD',
+                'emmanuel@inteoffice.test' => 'EMMANUEL_INITIAL_PASSWORD',
+            };
+
+            $password = env($variable);
+
+            if (!is_string($password) || strlen($password) < 12) {
+                throw new RuntimeException(
+                    "Falta configurar una contraseña segura: {$variable}"
+                );
+            }
+
+            $usuario = new User();
+
+$usuario->name = $nombre;
+$usuario->email = $correo;
+$usuario->password = Hash::make($password);
+$usuario->rol = 'administrador';
+$usuario->email_verified_at = now();
+
+$usuario->save();
         }
     }
 }

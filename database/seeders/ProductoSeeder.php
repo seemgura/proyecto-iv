@@ -18,7 +18,7 @@ class ProductoSeeder extends Seeder
                 'descripcion' => 'Escritorio contemporáneo de líneas limpias y proporciones equilibradas, diseñado para espacios de trabajo modernos. Su acabado en madera aporta calidez y una estética atemporal.',
                 'precio' => 12900.00,
                 'stock' => 8,
-                'imagen' => 'images/productos/mesa-forma-01.png',
+                'imagen' => 'images/productos/mesa-forma-01.webp',
                 'destacado' => true,
             ],
             [

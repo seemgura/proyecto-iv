@@ -1,5 +1,13 @@
     <x-app-layout>
 
+    @php
+        $favoritosIds = auth()->check()
+            ? \App\Models\Favorito::where('user_id', auth()->id())
+                ->pluck('producto_id')
+                ->all()
+            : [];
+    @endphp
+
     <div class="catalog-page">
         @if (session('success'))
             <div class="success-message" role="status">{{ session('success') }}</div>
@@ -83,6 +91,28 @@
 
                             <div class="product-actions">
                                 <a href="{{ route('productos.show', $producto) }}" class="action-link">Ver producto</a>
+
+                                @auth
+                                    @php
+                                        $guardado = in_array($producto->id, $favoritosIds);
+                                    @endphp
+
+                                    <form action="{{ route('favoritos.toggle', $producto) }}" method="POST">
+                                        @csrf
+                                        <button type="submit"
+                                                class="action-link"
+                                                aria-pressed="{{ $guardado ? 'true' : 'false' }}"
+                                                aria-label="{{ $guardado ? 'Quitar de favoritos' : 'Agregar a favoritos' }}: {{ $producto->nombre }}"
+                                                style="color:{{ $guardado ? '#a43b43' : 'inherit' }};">
+                                            {{ $guardado ? '♥ Guardado' : '♡ Guardar' }}
+                                        </button>
+                                    </form>
+                                @else
+                                    <a href="{{ route('login') }}" class="action-link"
+                                       aria-label="Inicia sesión para guardar {{ $producto->nombre }}">
+                                        ♡ Guardar
+                                    </a>
+                                @endauth
 
                                 @if ($esAdministrador)
                                     <a href="{{ route('productos.edit', $producto) }}" class="action-link">Editar</a>

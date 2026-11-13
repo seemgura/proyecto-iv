@@ -214,3 +214,12 @@ Route::middleware('auth')->group(function () {
 */
 
 require __DIR__.'/auth.php';
+
+// Favoritos de usuarios autenticados
+Route::middleware('auth')->group(function () {
+    Route::get('/favoritos', [\App\Http\Controllers\FavoritoController::class, 'index'])
+        ->name('favoritos.index');
+
+    Route::post('/favoritos/{producto}', [\App\Http\Controllers\FavoritoController::class, 'toggle'])
+        ->name('favoritos.toggle');
+});

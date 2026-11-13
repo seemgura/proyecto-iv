@@ -43,6 +43,22 @@
                         </a>
                     @endauth
 
+                    @auth
+                        <a
+                            href="{{ route('favoritos.index') }}"
+                            class="relative py-7 text-[10px] font-medium tracking-[0.2em] uppercase transition
+                            {{ request()->routeIs('favoritos.*')
+                                ? 'text-[#171715]'
+                                : 'text-[#817A72] hover:text-[#171715]' }}"
+                        >
+                            ♡ Mis favoritos
+
+                            @if (request()->routeIs('favoritos.*'))
+                                <span class="absolute bottom-0 left-0 h-px w-full bg-[#5A4030]"></span>
+                            @endif
+                        </a>
+                    @endauth
+
                     <a
                         href="{{ url('/') }}"
                         class="py-7 text-[10px] font-medium tracking-[0.2em] uppercase text-[#817A72] transition hover:text-[#171715]"
@@ -192,6 +208,15 @@
                 >
                     Ver sitio
                 </a>
+
+                @auth
+                    <a
+                        href="{{ route('favoritos.index') }}"
+                        class="block border-b border-[#DED8CF] py-4 text-[10px] tracking-[0.2em] uppercase text-[#5F5952]"
+                    >
+                        ♡ Mis favoritos
+                    </a>
+                @endauth
 
                 @auth
                     <a
